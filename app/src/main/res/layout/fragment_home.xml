@@ -53,6 +53,7 @@
            android:textStyle="bold"
            android:textColor="@color/white"
            android:textSize="28sp"
+           android:layout_marginTop="12dp"
            android:paddingStart="12dp"
            app:guidelineUseRtl="true"
            app:layout_constraintTop_toBottomOf="@id/nowplaying_recyclerview"
@@ -73,14 +74,13 @@
            app:guidelineUseRtl="true"/>
        <androidx.recyclerview.widget.RecyclerView
            android:id="@+id/popular_recyclerview"
-           android:layout_width="match_parent"
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:scrollbars="horizontal"
            android:layout_centerVertical="true"
            android:layout_centerHorizontal="true"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           android:paddingT="12dp"
+           android:paddingStart="8dp"
            app:layout_constraintTop_toBottomOf="@id/popular_TV"/>
 
    </androidx.constraintlayout.widget.ConstraintLayout>
