@@ -19,6 +19,8 @@ class HomeFragment : Fragment() {
     private lateinit var playingNowAdapter: NowPlayingAdapter
     //second Rv
     private lateinit var popularFilmsAdapter: PopularFilmsAdapter
+//third Rv
+    private lateinit var topRatedAdapter: TopRatedAdapter
 
 
     override fun onCreateView(
@@ -47,6 +49,12 @@ class HomeFragment : Fragment() {
         popular_recyclerview.layoutManager = LinearLayoutManager (activity, LinearLayoutManager.HORIZONTAL,
             false)
         popular_recyclerview.adapter =  popularFilmsAdapter
+
+        //third Rv
+        topRatedAdapter = TopRatedAdapter()
+        toprated_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,
+            false)
+        toprated_recyclerview.adapter = topRatedAdapter
 
 
 
