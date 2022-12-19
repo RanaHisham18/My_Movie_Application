@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/popularseeall_IV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <TextView
+        android:id="@+id/popualarseeall_filmname_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:text="Film Name"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toEndOf="@id/popularseeall_IV"
+        tools:layout_editor_absoluteY="24dp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/popularseeall_filmcategory_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="film Categoty"
+        app:layout_constraintTop_toBottomOf="@id/popualarseeall_filmname_TV"
+        app:layout_constraintStart_toStartOf="@id/popualarseeall_filmname_TV"
+        app:layout_constraintEnd_toEndOf="@id/popualarseeall_filmname_TV"/>
+
+    <ImageView
+        android:id="@+id/popularseeall_ratingstar_IV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        app:layout_constraintStart_toStartOf="@id/popularseeall_filmcategory_Tv"
+        app:layout_constraintTop_toBottomOf="@id/popularseeall_filmcategory_Tv"/>
+
+    <TextView
+        android:id="@+id/popualarseeall_ratingnumber_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3.67"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/popularseeall_ratingstar_IV"
+        app:layout_constraintTop_toBottomOf="@id/popularseeall_filmcategory_Tv"
+        app:layout_constraintEnd_toEndOf="@id/popularseeall_filmcategory_Tv"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
