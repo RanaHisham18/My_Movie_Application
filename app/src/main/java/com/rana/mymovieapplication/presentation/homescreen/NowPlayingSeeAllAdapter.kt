@@ -10,7 +10,7 @@ class NowPlayingSeeAllAdapter: RecyclerView.Adapter<NowPlayingSeeAllAdapter.MyVi
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.nowplayinf_seeall_rv_item,
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.nowplaying_seeall_rv_item,
             parent, false)
         return NowPlayingSeeAllAdapter.MyViewHolder(view)
     }
