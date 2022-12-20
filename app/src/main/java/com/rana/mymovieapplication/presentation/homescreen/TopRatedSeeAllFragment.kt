@@ -1,4 +1,6 @@
 package com.rana.mymovieapplication.presentation.homescreen
 
-class TopRatedSeeAllFragment {
+import androidx.fragment.app.Fragment
+
+class TopRatedSeeAllFragment : Fragment() {
 }

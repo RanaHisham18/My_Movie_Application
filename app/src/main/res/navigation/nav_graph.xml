@@ -18,12 +18,19 @@
         <action
             android:id="@+id/action_homeFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_topRatedSeeAllFragment"
+            app:destination="@id/topRatedSeeAllFragment" />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingSeeAllFragment"
         android:name="com.rana.mymovieapplication.presentation.homescreen.NowPlayingSeeAllFragment"
         android:label="fragment_now_playing_see_all"
-        tools:layout="@layout/fragment_now_playing_see_all" />
+        tools:layout="@layout/fragment_now_playing_see_all" >
+        <action
+            android:id="@+id/action_nowPlayingSeeAllFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment"
@@ -37,7 +44,11 @@
         android:id="@+id/popularSeeAllFragment"
         android:name="com.rana.mymovieapplication.presentation.homescreen.PopularSeeAllFragment"
         android:label="fragment_popular_see_all"
-        tools:layout="@layout/fragment_popular_see_all" />
+        tools:layout="@layout/fragment_popular_see_all" >
+        <action
+            android:id="@+id/action_popularSeeAllFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.rana.mymovieapplication.presentation.loginscreen.LoginFragment"
@@ -48,4 +59,12 @@
         android:name="com.rana.mymovieapplication.presentation.reviewscreen.ReviewsFragment"
         android:label="fragment_reviews"
         tools:layout="@layout/fragment_reviews" />
+    <fragment
+        android:id="@+id/topRatedSeeAllFragment"
+        android:name="com.rana.mymovieapplication.presentation.homescreen.TopRatedSeeAllFragment"
+        android:label="TopRatedSeeAllFragment" >
+        <action
+            android:id="@+id/action_topRatedSeeAllFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
 </navigation>
