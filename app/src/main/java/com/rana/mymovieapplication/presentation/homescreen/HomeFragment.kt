@@ -73,6 +73,13 @@ class HomeFragment : Fragment() {
 //// Navigate using the IDs you defined in your Nav Graph
 //        navController.navigate(R.id.nowPlayingSeeAllFragment) }
 
+        seeAll_TextView.setOnClickListener {
+            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+
+            navController.navigate(R.id.nowPlayingSeeAllFragment)
+        }
+
 
 
 
