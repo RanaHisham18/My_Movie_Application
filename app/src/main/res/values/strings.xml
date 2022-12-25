@@ -6,4 +6,7 @@
     <string name="popular">Popular</string>
     <string name="see_all">See All</string>
     <string name="top_rated">Top Rated</string>
+    <string name="overview">Overview</string>
+    <string name="trailer">Trailer</string>
+    <string name="reviews">Reviews</string>
 </resources>
