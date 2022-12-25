@@ -6,6 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.moviedetails.MovieDetailFragment">
 
+
+
     <ImageView
         android:id="@+id/movieDetail_film_Iv"
         android:layout_width="420dp"

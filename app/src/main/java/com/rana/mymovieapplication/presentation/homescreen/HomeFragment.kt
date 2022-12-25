@@ -64,21 +64,14 @@ class HomeFragment : Fragment() {
 
 
 
-        //some trials for navigation
-//        button = seeAll_TextView as Button
-//        button.setOnClickListener{
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.homeFragment) as NavHostFragment
-//        val navController = navHostFragment.navController
+
+
+//        seeAll_TextView.setOnClickListener {
+//            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+//            val navControllerr = navHostFragment.navController
 //
-//// Navigate using the IDs you defined in your Nav Graph
-//        navController.navigate(R.id.nowPlayingSeeAllFragment) }
-
-        seeAll_TextView.setOnClickListener {
-            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val navController = navHostFragment.navController
-
-            navController.navigate(R.id.nowPlayingSeeAllFragment)
-        }
+//            navControllerr.navigate(R.id.nowPlayingSeeAllFragment)
+//        }
 
 
 
