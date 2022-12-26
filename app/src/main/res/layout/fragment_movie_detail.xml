@@ -214,6 +214,7 @@
             app:layout_constraintTop_toBottomOf="@id/movieDetail_username_Tv" />
 
         <TextView
+            android:id="@+id/movieDetail_reviews_text_Tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
@@ -224,7 +225,94 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_review_dateTV"/>
+        <TextView
+            android:id="@+id/movieDetail_casts_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+           android:text="@string/casts"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_reviews_text_Tv" />
 
+        <ImageView
+            android:id="@+id/movieDetail_casts_userphoto_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/ic_baseline_supervised_user_circle_24"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_Tv"/>
+
+        <TextView
+            android:id="@+id/movieDetail_casts_username_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="bla bla bla "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toEndOf="@id/movieDetail_casts_userphoto_Tv"
+            app:layout_constraintBottom_toBottomOf="@id/movieDetail_casts_userphoto_Tv"
+            app:layout_constraintTop_toTopOf="@id/movieDetail_casts_userphoto_Tv"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username_Tv"
+            app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username_Tv"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username_Tv"
+            android:text="bla bla category"/>
+
+
+        <ImageView
+            android:id="@+id/movieDetail_casts_userphoto2_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="48dp"
+            android:src="@drawable/ic_baseline_supervised_user_circle_24"
+            app:layout_constraintStart_toEndOf="@id/movieDetail_casts_username_Tv"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_Tv" />
+
+        <TextView
+            android:id="@+id/movieDetail_casts_username2_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="bla bla bla "
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/movieDetail_casts_userphoto2_Tv"
+            app:layout_constraintTop_toTopOf="@id/movieDetail_casts_userphoto_Tv"/>
+
+        <TextView
+            android:id="@+id/movieDetail_casts_category_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username_Tv"
+            app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username_Tv"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username_Tv"
+            android:text="bla bla category"/>
+
+
+        <TextView
+            android:id="@+id/movieDetail_casts_category2_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username2_Tv"
+            app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username2_Tv"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username2_Tv"
+            android:text="bla bla category"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
