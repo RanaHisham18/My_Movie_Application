@@ -56,12 +56,6 @@ dependencies {
 
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
 
-//
-    // Koin for Android
-//    implementation 'org.koin:koin-android:3.2.0'
-//    implementation 'org.koin:koin-androidx-view-model:3.2.0'
-//    implementation 'org.koin:koin-androidx-scope:3.2.0'
-
 
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
@@ -105,4 +99,15 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.6.0-alpha04"
 
 
+
+    // Koin main features for Android
+    implementation "io.insert-koin:koin-android:3.2.3"
+    implementation "io.insert-koin:koin-annotations:3.2.3"
+    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+
+    //Koin in Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:3.2.3"
+    // Koin in Navigation Graph
+    implementation "io.insert-koin:koin-androidx-navigation:3.2.3"
 }
+
