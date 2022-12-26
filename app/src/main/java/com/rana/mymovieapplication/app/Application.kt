@@ -1,4 +1,5 @@
 package com.rana.mymovieapplication.app
+
 import android.app.Application
 import android.content.Context
 import coil.Coil
@@ -18,14 +19,14 @@ class Application : Application() {
         }.build()
 
         Coil.setImageLoader(imageLoader)
-startKoin {
-    androidContext(this@Application)
-    modules(
-        listOf(
-            //here I should mention the app modules
-        )
-    )
-}
+        startKoin {
+            androidContext(this@Application)
+            modules(
+                listOf(
+                    //here I should mention the app modules
+                )
+            )
+        }
     }
 
 }
