@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
-
+    id 'kotlin-kapt'
 }
 
 android {
@@ -17,6 +17,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "API_KEY", "\"${API_KEY}\"")
     }
 
     buildTypes {
@@ -73,8 +74,8 @@ dependencies {
 
 
     // moshi ( for JSON parsing )
-    implementation 'com.squareup.moshi:moshi:1.12.0'
-    //kapt('com.squareup.moshi:moshi-kotlin-codegen:1.10.0')
+    implementation 'com.squareup.moshi:moshi:1.14.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.14.0'
 
     // coil (images loader)
     implementation('io.coil-kt:coil:1.0.0')
@@ -101,13 +102,12 @@ dependencies {
 
 
     // Koin main features for Android
-    implementation "io.insert-koin:koin-android:3.2.3"
-    implementation "io.insert-koin:koin-annotations:3.2.3"
-    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+    implementation "io.insert-koin:koin-android:3.3.1"
+    implementation "io.insert-koin:koin-core:3.3.0"
 
-    //Koin in Jetpack WorkManager
-    implementation "io.insert-koin:koin-androidx-workmanager:3.2.3"
-    // Koin in Navigation Graph
-    implementation "io.insert-koin:koin-androidx-navigation:3.2.3"
+    //RX
+    implementation "io.reactivex.rxjava3:rxjava:3.1.5"
+    implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
 }
 

@@ -1,0 +1,48 @@
+Index: app/src/main/java/com/rana/mymovieapplication/data/remote/service/MoviesServices.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rana.mymovieapplication.data.remote.service\r\n\r\nimport com.rana.mymovieapplication.data.remote.entities.NowPlayingModel\r\nimport io.reactivex.rxjava3.core.Single\r\nimport retrofit2.http.GET\r\n\r\ninterface MoviesServices {\r\n\r\n    @GET(\"movie/now_playing\")\r\n    fun getNowPlaying(\r\n        apiKey: String,\r\n        language: String = \"en-US\",\r\n        page: Int\r\n    ): Single<NowPlayingModel>\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/rana/mymovieapplication/data/remote/service/MoviesServices.kt b/app/src/main/java/com/rana/mymovieapplication/data/remote/service/MoviesServices.kt
+--- a/app/src/main/java/com/rana/mymovieapplication/data/remote/service/MoviesServices.kt	
++++ b/app/src/main/java/com/rana/mymovieapplication/data/remote/service/MoviesServices.kt	
+@@ -1,8 +1,9 @@
+ package com.rana.mymovieapplication.data.remote.service
+ 
+ import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+-import io.reactivex.rxjava3.core.Single
+ import retrofit2.http.GET
++import io.reactivex.rxjava3.core.Single
++
+ 
+ interface MoviesServices {
+ 
+@@ -12,4 +13,5 @@
+         language: String = "en-US",
+         page: Int
+     ): Single<NowPlayingModel>
++
+ }
+\ No newline at end of file
+Index: app/src/main/java/com/rana/mymovieapplication/data/remote/repos/MoviesRepo.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rana.mymovieapplication.data.remote.repos\r\n\r\nimport com.rana.mymovieapplication.BuildConfig\r\nimport com.rana.mymovieapplication.data.remote.entities.NowPlayingModel\r\nimport com.rana.mymovieapplication.data.remote.service.MoviesServices\r\nimport io.reactivex.rxjava3.android.schedulers.AndroidSchedulers\r\nimport io.reactivex.rxjava3.core.Scheduler\r\nimport io.reactivex.rxjava3.core.Single\r\nimport io.reactivex.rxjava3.schedulers.Schedulers\r\n\r\nclass MoviesRepo(private val moviesServices: MoviesServices) {\r\n\r\n\r\n    fun getNowPlayingMovies(\r\n        apiKey: String = BuildConfig.API_KEY,\r\n        page: Int\r\n    ): Single<NowPlayingModel> =\r\n        moviesServices.getNowPlaying(apiKey = apiKey, page = page)\r\n            .subscribeOn(Schedulers.io())\r\n            .observeOn(AndroidSchedulers.mainThread())\r\n}
+===================================================================
+diff --git a/app/src/main/java/com/rana/mymovieapplication/data/remote/repos/MoviesRepo.kt b/app/src/main/java/com/rana/mymovieapplication/data/remote/repos/MoviesRepo.kt
+--- a/app/src/main/java/com/rana/mymovieapplication/data/remote/repos/MoviesRepo.kt	
++++ b/app/src/main/java/com/rana/mymovieapplication/data/remote/repos/MoviesRepo.kt	
+@@ -1,12 +1,11 @@
+ package com.rana.mymovieapplication.data.remote.repos
+ 
++import androidx.work.impl.Schedulers
+ import com.rana.mymovieapplication.BuildConfig
+ import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+ import com.rana.mymovieapplication.data.remote.service.MoviesServices
+ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+-import io.reactivex.rxjava3.core.Scheduler
+ import io.reactivex.rxjava3.core.Single
+-import io.reactivex.rxjava3.schedulers.Schedulers
+ 
+ class MoviesRepo(private val moviesServices: MoviesServices) {
+ 
