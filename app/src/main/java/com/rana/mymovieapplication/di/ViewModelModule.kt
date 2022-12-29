@@ -10,11 +10,8 @@ import org.koin.dsl.module
    viewModel {
        HomeViewModel(moviesRepository = get())
    } }
-   val moviesRepositoryModule = module {
-   factory{
-       MoviesRepository(nowPlayingService = get())
-    }
 
 
-}
+
+
 

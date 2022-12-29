@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rana.mymovieapplication.R
+import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.nowplaying_rv_item.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -31,12 +36,25 @@ class HomeFragment : Fragment() {
     private lateinit var button: Button
 
 
+    private lateinit var viewModel: HomeViewModel
+    lateinit var filmname_Tv: TextView
+    lateinit var film_image : TextView
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
 //       Inflate the layout for this fragment
 
+
+        filmname_Tv = filmnameTV
+        viewModel.getNowPlaying()
+        viewModel.result.observe(viewLifecycleOwner) {
+            filmname_Tv.text = it.results.title.toString()
+            film_image = it.results.poster_path.toString()
+
+        }
         return inflater.inflate(R.layout.fragment_home, container,
             false)
 

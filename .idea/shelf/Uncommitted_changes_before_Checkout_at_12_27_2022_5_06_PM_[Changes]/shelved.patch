@@ -1,0 +1,20 @@
+Index: app/src/main/java/com/rana/mymovieapplication/di/ViewModelModule.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rana.mymovieapplication.di\r\n\r\nimport com.rana.mymovieapplication.data.remote.repository.MoviesRepository\r\nimport com.rana.mymovieapplication.presentation.homescreen.HomeViewModel\r\nimport com.rana.mymovieapplication.services.NowPlayingService\r\nimport org.koin.androidx.viewmodel.dsl.viewModel\r\nimport org.koin.dsl.module\r\n\r\n   val viewmodelModules = module {\r\n   viewModel {\r\n       HomeViewModel(moviesRepository = get())\r\n   } }\r\n   val moviesRepositoryModule = module {\r\n   factory{\r\n       MoviesRepository(nowPlayingService = get())\r\n    }\r\n\r\n\r\n}\r\n\r\n
+===================================================================
+diff --git a/app/src/main/java/com/rana/mymovieapplication/di/ViewModelModule.kt b/app/src/main/java/com/rana/mymovieapplication/di/ViewModelModule.kt
+--- a/app/src/main/java/com/rana/mymovieapplication/di/ViewModelModule.kt	
++++ b/app/src/main/java/com/rana/mymovieapplication/di/ViewModelModule.kt	
+@@ -10,11 +10,5 @@
+    viewModel {
+        HomeViewModel(moviesRepository = get())
+    } }
+-   val moviesRepositoryModule = module {
+-   factory{
+-       MoviesRepository(nowPlayingService = get())
+-    }
+ 
+ 
+-}
+-

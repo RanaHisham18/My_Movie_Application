@@ -16,6 +16,7 @@ class MoviesRepository (val nowPlayingService: NowPlayingService) {
         ): Single<NowPlayingModel> = nowPlayingService.getNowPlaying(apiKey,page = page)
         .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).zipWith(nowPlayingService.getNowPlaying
             (apiKey, language = "en_US", page =1), ) //TODO
+    //zip another services of the rest RVs
 }
 
 
