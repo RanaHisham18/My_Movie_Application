@@ -36,9 +36,13 @@ class MoviesRepository(
             .observeOn(AndroidSchedulers.mainThread())
 
 
-    fun getTopRated(apiKey: String = BuildConfig.API_KEY , page: Int): Single<TopRatedModel> =
-        topRatedService.getTopRated(apiKey, page = page).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers) {}
 
+
+    fun getTopRated(apiKey: String = BuildConfig.API_KEY,
+                    page: Int
+    ): Single<TopRatedModel> =
+        topRatedService.getTopRated(apiKey, page = page).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 
 
 }
