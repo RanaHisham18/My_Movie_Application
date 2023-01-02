@@ -48,13 +48,7 @@ class HomeFragment : Fragment() {
 //       Inflate the layout for this fragment
 
 
-        filmname_Tv = filmnameTV
-        viewModel.getNowPlaying()
-        viewModel.result.observe(viewLifecycleOwner) {
-            filmname_Tv.text = it.results.title.toString()
-            film_image = it.results.poster_path.toString()
-
-        }
+//
         return inflater.inflate(R.layout.fragment_home, container,
             false)
 

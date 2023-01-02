@@ -1,18 +1,15 @@
 package com.rana.mymovieapplication.services
 
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import retrofit2.http.GET
 import io.reactivex.rxjava3.core.Single
+import retrofit2.http.GET
 
+interface TopRatedService {
 
-
-interface NowPlayingService {
-
-    @GET("/movie/now_playing")
-    fun getNowPlaying (
+    @GET("/movie/top_rated")
+    fun getTopRated (
         apikey: String,
         language: String = "en-US",
         page : Int
     ): Single<NowPlayingModel>
-
 }

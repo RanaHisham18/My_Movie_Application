@@ -21,7 +21,7 @@ class Application : Application() {
         }.build()
 
         Coil.setImageLoader(imageLoader)
-startKoin {
+     startKoin {
     androidContext(this@Application)
     modules(
         listOf(

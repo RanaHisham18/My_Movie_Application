@@ -8,6 +8,6 @@ import retrofit2.http.GET
 
 val serviceModule = module {
  factory {
-    NowPlayingService //Todo
+    NowPlayingService
  }
 }

@@ -5,7 +5,7 @@ import org.koin.dsl.module
 
 val moviesRepositoryModule = module {
     factory{
-        MoviesRepository(nowPlayingService = get())
+        MoviesRepository(nowPlayingService = get(), topRatedService = get(), popularService = get())
     }
 
 
