@@ -6,10 +6,11 @@ import com.rana.mymovieapplication.services.NowPlayingService
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-   val viewmodelModules = module {
-   viewModel {
-       HomeViewModel(moviesRepository = get())
-   } }
+val viewmodelModules = module {
+    viewModel {
+        HomeViewModel(moviesRepository = get())
+    }
+}
 
 
 

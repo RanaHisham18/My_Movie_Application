@@ -2,6 +2,7 @@ package com.rana.mymovieapplication.presentation.homescreen
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,17 +29,19 @@ class HomeFragment : Fragment() {
 
     //first Rv
     private lateinit var playingNowAdapter: NowPlayingAdapter
+
     //second Rv
     private lateinit var popularFilmsAdapter: PopularFilmsAdapter
-//third Rv
+
+    //third Rv
     private lateinit var topRatedAdapter: TopRatedAdapter
 
     private lateinit var button: Button
 
 
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModel()
     lateinit var filmname_Tv: TextView
-    lateinit var film_image : TextView
+    lateinit var film_image: TextView
 
 
     override fun onCreateView(
@@ -49,35 +52,46 @@ class HomeFragment : Fragment() {
 
 
 //
-        return inflater.inflate(R.layout.fragment_home, container,
-            false)
+        Log.d(HomeFragment::class.java.simpleName, "onCreateView: ")
+        return inflater.inflate(
+            R.layout.fragment_home, container,
+            false
+        )
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(HomeFragment::class.java.simpleName, "onViewCreated: ")
+        viewModel.getNowPlaying()
+        viewModel.result.observe(viewLifecycleOwner) {
+            Log.d(HomeFragment::class.java.simpleName, "onViewCreated: ${it.results}")
+        }
         //first Rv
         playingNowAdapter = NowPlayingAdapter()
 
-        nowplaying_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,
-            false)
+        nowplaying_recyclerview.layoutManager = LinearLayoutManager(
+            activity, LinearLayoutManager.HORIZONTAL,
+            false
+        )
         nowplaying_recyclerview.adapter = playingNowAdapter
 
         //Second Rv
         popularFilmsAdapter = PopularFilmsAdapter()
 
-        popular_recyclerview.layoutManager = LinearLayoutManager (activity, LinearLayoutManager.HORIZONTAL,
-            false)
-        popular_recyclerview.adapter =  popularFilmsAdapter
+        popular_recyclerview.layoutManager = LinearLayoutManager(
+            activity, LinearLayoutManager.HORIZONTAL,
+            false
+        )
+        popular_recyclerview.adapter = popularFilmsAdapter
 
         //third Rv
         topRatedAdapter = TopRatedAdapter()
-        toprated_recyclerview.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL,
-            false)
+        toprated_recyclerview.layoutManager = LinearLayoutManager(
+            activity, LinearLayoutManager.HORIZONTAL,
+            false
+        )
         toprated_recyclerview.adapter = topRatedAdapter
-
-
-
 
 
 //        seeAll_TextView.setOnClickListener {
@@ -88,17 +102,23 @@ class HomeFragment : Fragment() {
 //        }
 
 
+    }
 
+    override fun onStart() {
+        super.onStart()
+        Log.d(HomeFragment::class.java.simpleName, "onStart: ")
+    }
 
-
-
-
-
-
-
-
-
+    override fun onResume() {
+        super.onResume()
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
 }

@@ -16,7 +16,6 @@ class NowPlayingSeeAllAdapter: RecyclerView.Adapter<NowPlayingSeeAllAdapter.MyVi
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
     }
 
     override fun getItemCount(): Int {

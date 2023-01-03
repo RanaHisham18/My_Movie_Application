@@ -11,7 +11,7 @@ import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
 
-//    private lateinit var repository: MoviesRepository
+    //    private lateinit var repository: MoviesRepository
 //
 //    init {
 //
@@ -32,11 +32,13 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     fun getNowPlaying() {
         moviesRepository.getNowPlayingFilms(page = 1).subscribe({ nowplayingModel ->
             m_result.value = nowplayingModel
-        },
-            { errorThrowable -> m_error.value = errorThrowable.localizedMessage })
+        }, { errorThrowable ->
+            m_error.value = errorThrowable.localizedMessage
+        })
 
 
     }
+
     ///////////////////////////////////////////////////////////////
     private val m_result2: MutableLiveData<PopularModel> by lazy {
         MutableLiveData()
@@ -59,10 +61,11 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
 
 
     }
-////////////////////////////////////////////////////////////////////////
-private val m_result3: MutableLiveData<TopRatedModel> by lazy {
-    MutableLiveData()
-}
+
+    ////////////////////////////////////////////////////////////////////////
+    private val m_result3: MutableLiveData<TopRatedModel> by lazy {
+        MutableLiveData()
+    }
 
     val result3: LiveData<TopRatedModel> = m_result3
 
@@ -74,9 +77,7 @@ private val m_result3: MutableLiveData<TopRatedModel> by lazy {
     }
 
     fun getTopRated() {
-        moviesRepository.
-
-        getTopRated(page = 1).subscribe({ topratedModel ->
+        moviesRepository.getTopRated(page = 1).subscribe({ topratedModel ->
             m_result3.value = topratedModel
         },
             { errorThrowable -> m_error3.value = errorThrowable.localizedMessage })
