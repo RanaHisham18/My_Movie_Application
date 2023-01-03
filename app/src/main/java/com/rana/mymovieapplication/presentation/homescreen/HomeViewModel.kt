@@ -9,6 +9,13 @@ import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
 import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
+
+
+//    private lateinit var repository: MoviesRepository
+//
+//    init {
+//
+//    }
     private val m_result: MutableLiveData<NowPlayingModel> by lazy {
         MutableLiveData()
     }
