@@ -1,8 +1,9 @@
 package com.rana.mymovieapplication.data.remote.entities
 
 import com.google.gson.annotations.JsonAdapter
+import com.squareup.moshi.JsonClass
 
-@
+@JsonClass(generateAdapter = true)
 data class NowPlayingModel(
     val dates: Dates,
     val page: Int,
@@ -10,11 +11,12 @@ data class NowPlayingModel(
     val total_pages: Int,
     val total_results: Int
 ) {
+    @JsonClass(generateAdapter = true)
     data class Dates(
         val maximum: String,
         val minimum: String
     )
-
+    @JsonClass(generateAdapter = true)
     data class Result(
         val adult: Boolean,
         val backdrop_path: String,

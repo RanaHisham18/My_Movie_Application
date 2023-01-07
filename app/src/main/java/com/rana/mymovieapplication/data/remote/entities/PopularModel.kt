@@ -1,11 +1,15 @@
 package com.rana.mymovieapplication.data.remote.entities
 
+import com.squareup.moshi.JsonClass
+
+@JsonClass(generateAdapter = true)
 data class PopularModel(
     val page: Int,
     val results: List<Result>,
     val total_pages: Int,
     val total_results: Int
 ) {
+    @JsonClass(generateAdapter = true)
     data class Result(
         val adult: Boolean,
         val backdrop_path: String,
