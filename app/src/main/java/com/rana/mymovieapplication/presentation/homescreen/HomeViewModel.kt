@@ -10,18 +10,10 @@ import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
 
-
-//    private lateinit var repository: MoviesRepository
-//
-//    init {
-//
-//    }
-    private val m_result: MutableLiveData<NowPlayingModel> by lazy {
+    private val nowPlayingResult: MutableLiveData<NowPlayingModel> by lazy {
         MutableLiveData()
     }
-
-    val result: LiveData<NowPlayingModel> = m_result
-
+    val nowPlayingLiveData: LiveData<NowPlayingModel> = nowPlayingResult
     private val m_error: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
@@ -31,7 +23,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
 
     fun getNowPlaying() {
         moviesRepository.getNowPlayingFilms(page = 1).subscribe({ nowplayingModel ->
-            m_result.value = nowplayingModel
+            nowPlayingResult.value = nowplayingModel
         },
             { errorThrowable -> m_error.value = errorThrowable.localizedMessage })
 

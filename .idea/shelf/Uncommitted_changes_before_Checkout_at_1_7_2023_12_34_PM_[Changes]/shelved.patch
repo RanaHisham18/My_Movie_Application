@@ -1,0 +1,51 @@
+Index: app/src/main/java/com/rana/mymovieapplication/di/ServiceModule.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.rana.mymovieapplication.di\r\n\r\nimport com.rana.mymovieapplication.BuildConfig\r\nimport com.rana.mymovieapplication.network.ApplicationNetwork\r\nimport com.rana.mymovieapplication.services.NowPlayingService\r\nimport com.rana.mymovieapplication.services.PopularService\r\nimport com.rana.mymovieapplication.services.TopRatedService\r\nimport hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory\r\nimport org.koin.core.module.Module\r\nimport org.koin.dsl.module\r\nimport retrofit2.Retrofit\r\nimport retrofit2.converter.moshi.MoshiConverterFactory\r\nimport retrofit2.http.GET\r\n\r\nval serviceModule = module {\r\n\r\n    single {\r\n        Retrofit.Builder()\r\n            .baseUrl(BuildConfig.API_BASE_URL)\r\n            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())\r\n            .addConverterFactory(MoshiConverterFactory.create())\r\n            .build()\r\n    }\r\n\r\n    factory {\r\n        get<Retrofit>().create(NowPlayingService::class.java)\r\n    }\r\n\r\n    factory {\r\n        get<Retrofit>().create(TopRatedService::class.java)\r\n    }\r\n\r\n    factory {\r\n        get<Retrofit>().create(PopularService::class.java)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/rana/mymovieapplication/di/ServiceModule.kt b/app/src/main/java/com/rana/mymovieapplication/di/ServiceModule.kt
+--- a/app/src/main/java/com/rana/mymovieapplication/di/ServiceModule.kt	(revision 9ccf23694558a0e8dcaf1b7bd98ba10ff23fb484)
++++ b/app/src/main/java/com/rana/mymovieapplication/di/ServiceModule.kt	(date 1673087671921)
+@@ -1,36 +1,13 @@
+ package com.rana.mymovieapplication.di
+ 
+-import com.rana.mymovieapplication.BuildConfig
+-import com.rana.mymovieapplication.network.ApplicationNetwork
+ import com.rana.mymovieapplication.services.NowPlayingService
+-import com.rana.mymovieapplication.services.PopularService
+-import com.rana.mymovieapplication.services.TopRatedService
+-import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
+ import org.koin.core.module.Module
+ import org.koin.dsl.module
+ import retrofit2.Retrofit
+-import retrofit2.converter.moshi.MoshiConverterFactory
+ import retrofit2.http.GET
+ 
+ val serviceModule = module {
+-
+-    single {
+-        Retrofit.Builder()
+-            .baseUrl(BuildConfig.API_BASE_URL)
+-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+-            .addConverterFactory(MoshiConverterFactory.create())
+-            .build()
+-    }
+-
+-    factory {
+-        get<Retrofit>().create(NowPlayingService::class.java)
+-    }
+-
+-    factory {
+-        get<Retrofit>().create(TopRatedService::class.java)
+-    }
+-
+-    factory {
+-        get<Retrofit>().create(PopularService::class.java)
+-    }
++ factory {
++    NowPlayingService
++ }
+ }
+\ No newline at end of file

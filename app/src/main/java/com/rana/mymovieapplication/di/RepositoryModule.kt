@@ -4,7 +4,7 @@ import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 import org.koin.dsl.module
 
 val moviesRepositoryModule = module {
-    factory{
+    single{
         MoviesRepository(nowPlayingService = get(), topRatedService = get(), popularService = get())
     }
 
