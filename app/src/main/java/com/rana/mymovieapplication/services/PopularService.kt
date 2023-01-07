@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface PopularService {
 
-    @GET("/movie/popular")
+    @GET("movie/popular")
     fun getPopular (
         apikey: String,
         language: String = "en-US",

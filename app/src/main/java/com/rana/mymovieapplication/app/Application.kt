@@ -1,6 +1,6 @@
 package com.rana.mymovieapplication.app
+
 import android.app.Application
-import android.content.Context
 import coil.Coil
 import coil.ImageLoader
 import coil.decode.SvgDecoder
@@ -21,17 +21,17 @@ class Application : Application() {
         }.build()
 
         Coil.setImageLoader(imageLoader)
-     startKoin {
-    androidContext(this@Application)
-    modules(
-        listOf(
-            //here I should mention the app modules
-            viewmodelModules,
-            moviesRepositoryModule,
-            serviceModule
-        )
-    )
-}
+        startKoin {
+            androidContext(this@Application)
+            modules(
+                listOf(
+                    //here I should mention the app modules
+                    viewmodelModules,
+                    moviesRepositoryModule,
+                    serviceModule
+                )
+            )
+        }
     }
 
 }

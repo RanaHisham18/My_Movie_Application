@@ -1,5 +1,8 @@
 package com.rana.mymovieapplication.data.remote.entities
 
+import com.google.gson.annotations.JsonAdapter
+
+@
 data class NowPlayingModel(
     val dates: Dates,
     val page: Int,

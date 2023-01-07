@@ -7,7 +7,7 @@ import retrofit2.http.GET
 
 interface TopRatedService {
 
-    @GET("/movie/top_rated")
+    @GET("movie/top_rated")
     fun getTopRated (
         apikey: String,
         language: String = "en-US",

@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Single
 
 interface NowPlayingService {
 
-    @GET("/movie/now_playing")
+    @GET("movie/now_playing")
     fun getNowPlaying (
         apikey: String,
         language: String = "en-US",
