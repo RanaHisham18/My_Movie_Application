@@ -14,64 +14,64 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         MutableLiveData()
     }
     val nowPlayingLiveData: LiveData<NowPlayingModel> = nowPlayingResult
-    private val m_error: MutableLiveData<String> by lazy {
+    private val nowPlayingMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val error: LiveData<NowPlayingModel> by lazy {
+    val nowPlayingError: LiveData<NowPlayingModel> by lazy {
         MutableLiveData()
     }
+
 
     fun getNowPlaying() {
         moviesRepository.getNowPlayingFilms(page = 1).subscribe({ nowplayingModel ->
             nowPlayingResult.value = nowplayingModel
         },
-            { errorThrowable -> m_error.value = errorThrowable.localizedMessage })
+            { errorThrowable -> nowPlayingMError.value = errorThrowable.localizedMessage })
 
 
     }
-    ///////////////////////////////////////////////////////////////
-    private val m_result2: MutableLiveData<PopularModel> by lazy {
+
+    private val popularResult: MutableLiveData<PopularModel> by lazy {
         MutableLiveData()
     }
 
-    val result2: LiveData<PopularModel> = m_result2
+    val popularModelLiveData: LiveData<PopularModel> = popularResult
 
-    private val m_error2: MutableLiveData<String> by lazy {
+    private val popularMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val error2: LiveData<PopularModel> by lazy {
+    val popularError: LiveData<PopularModel> by lazy {
         MutableLiveData()
     }
 
     fun getPopular() {
         moviesRepository.getPopular(page = 1).subscribe({ popularModel ->
-            m_result2.value = popularModel
+            popularResult.value = popularModel
         },
-            { errorThrowable -> m_error2.value = errorThrowable.localizedMessage })
+            { errorThrowable -> popularMError.value = errorThrowable.localizedMessage })
 
 
     }
-////////////////////////////////////////////////////////////////////////
-private val m_result3: MutableLiveData<TopRatedModel> by lazy {
-    MutableLiveData()
-}
 
-    val result3: LiveData<TopRatedModel> = m_result3
-
-    private val m_error3: MutableLiveData<String> by lazy {
+    private val topRatedResult: MutableLiveData<TopRatedModel> by lazy {
         MutableLiveData()
     }
-    val error3: LiveData<TopRatedModel> by lazy {
+
+    val topRatedLiveData: LiveData<TopRatedModel> = topRatedResult
+
+
+    private val topRatedMError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val topRatedError: LiveData<TopRatedModel> by lazy {
         MutableLiveData()
     }
 
     fun getTopRated() {
-        moviesRepository.
-
-        getTopRated(page = 1).subscribe({ topratedModel ->
-            m_result3.value = topratedModel
+        moviesRepository.getTopRated(page = 1).subscribe({ topratedModel ->
+            topRatedResult.value = topratedModel
         },
-            { errorThrowable -> m_error3.value = errorThrowable.localizedMessage })
+            { errorThrowable -> topRatedMError.value = errorThrowable.localizedMessage })
 
 
     }
