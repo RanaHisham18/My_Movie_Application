@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -51,10 +52,10 @@
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <TextView
-                android:id="@+id/ratingnumber_TV"
+                android:id="@+id/ratingnumber_count_TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4 (3.36 K)"
+                android:text="4"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:layout_marginTop="8dp"
@@ -62,7 +63,22 @@
                 app:layout_constraintStart_toEndOf="@id/popularratingstar_IV"/>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/ratingnumber_average_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="4"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_goneMarginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/ratingnumber_count_TV"
+        app:layout_constraintStart_toEndOf="@id/ratingnumber_count_TV"
+       />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

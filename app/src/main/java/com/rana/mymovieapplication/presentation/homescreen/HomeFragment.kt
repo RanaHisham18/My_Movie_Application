@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+import com.rana.mymovieapplication.data.remote.entities.PopularModel
+import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,27 +28,17 @@ class HomeFragment : Fragment() {
     //third Rv
     private lateinit var topRatedAdapter: TopRatedAdapter
 
-    private lateinit var button: Button
-
-
     private val viewModel: HomeViewModel by viewModel()
-    lateinit var filmname_Tv: TextView
-    lateinit var film_image: TextView
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-//       Inflate the layout for this fragment
-
-
-//
         return inflater.inflate(
             R.layout.fragment_home, container,
             false
         )
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,7 +58,6 @@ class HomeFragment : Fragment() {
             activity, LinearLayoutManager.HORIZONTAL,
             false
         )
-        popular_recyclerview.adapter = popularFilmsAdapter
 
         //third Rv
         topRatedAdapter = TopRatedAdapter()
@@ -76,7 +65,9 @@ class HomeFragment : Fragment() {
             activity, LinearLayoutManager.HORIZONTAL,
             false
         )
-        toprated_recyclerview.adapter = topRatedAdapter
+
+
+
         viewModel.getNowPlaying()
         viewModel.nowPlayingLiveData.observe(viewLifecycleOwner) {
             when (it is NowPlayingModel) {
@@ -90,6 +81,33 @@ class HomeFragment : Fragment() {
             }
         }
 
+        viewModel.getPopular()
+        viewModel.popularModelLiveData.observe(viewLifecycleOwner) {
+            when (it is PopularModel) {
+                true -> {
+                    popularFilmsAdapter.setData(it.results)
+                    popular_recyclerview.adapter = popularFilmsAdapter
+                }
+                else -> {
+
+                }
+            }
+        }
+//
+//        viewModel.getTopRated()
+//
+//
+//        viewModel.topRatedLiveData.observe(viewLifecycleOwner) {
+//            when (it is TopRatedModel) {
+//                true -> {
+//                   // topRatedAdapter.setData(it.results)
+//                   toprated_recyclerview.adapter = topRatedAdapter
+//                }
+//                else -> {
+//
+//                }
+//            }
+//        }
 
     }
 
