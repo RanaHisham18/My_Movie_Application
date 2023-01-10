@@ -18,9 +18,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-//    private  lateinit var  nowplayrecyclerView: RecyclerView
-//    private lateinit var nowplayingadapter: NowPlayingAdapter
-
     //first Rv
     private lateinit var playingNowAdapter: NowPlayingAdapter
 

@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel.Result
 import kotlinx.android.synthetic.main.nowplaying_rv_item.view.*
 
 class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>() {
@@ -39,14 +38,14 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-      holder.bind(movies.get(position))
+        holder.bind(movies.get(position))
     }
 
     override fun getItemCount(): Int {
         return movies.size
     }
 
-    fun setData (movies: List<NowPlayingModel.Result>){
+    fun setData(movies: List<NowPlayingModel.Result>) {
         this.movies = movies
     }
 }
