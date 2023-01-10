@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import com.rana.mymovieapplication.data.remote.entities.PopularModel
@@ -51,6 +53,10 @@ class HomeFragment : Fragment() {
             false
         )
 
+        var snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
+        snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
+
+
         //Second Rv
         popularFilmsAdapter = PopularFilmsAdapter()
 
@@ -93,22 +99,19 @@ class HomeFragment : Fragment() {
                 }
             }
         }
-//
-//        viewModel.getTopRated()
-//
-//
-//        viewModel.topRatedLiveData.observe(viewLifecycleOwner) {
-//            when (it is TopRatedModel) {
-//                true -> {
-//                   // topRatedAdapter.setData(it.results)
-//                   toprated_recyclerview.adapter = topRatedAdapter
-//                }
-//                else -> {
-//
-//                }
-//            }
-//        }
+
+        viewModel.getTopRated()
+        viewModel.topRatedLiveData.observe(viewLifecycleOwner) {
+            when (it is TopRatedModel) {
+                true -> {
+                    topRatedAdapter.setData(it.results)
+                   toprated_recyclerview.adapter = topRatedAdapter
+                }
+                else -> {
+
+                }
+        }
 
     }
 
-}
+} }

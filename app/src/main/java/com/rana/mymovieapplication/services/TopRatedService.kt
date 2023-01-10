@@ -14,6 +14,7 @@ interface TopRatedService {
         apikey: String,
         @Query("language")
         language: String = "en-US",
+        @Query("page")
         page : Int
     ): Single<TopRatedModel>
 }
