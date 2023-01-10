@@ -21,6 +21,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
             itemView.filmcategoryTV.text = movie.genre_ids.toString()
             itemView.rating_count_number_TV.text = movie.vote_count.toString()
             itemView.rating_average_number_TV.text = movie.vote_average.toString()
+            itemView.card_background.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
             itemView.imageslider.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
 
         }

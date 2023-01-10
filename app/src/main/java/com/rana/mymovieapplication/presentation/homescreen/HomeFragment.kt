@@ -53,8 +53,7 @@ class HomeFragment : Fragment() {
             false
         )
 
-        var snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
-        snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
+
 
 
         //Second Rv
@@ -106,6 +105,8 @@ class HomeFragment : Fragment() {
                 true -> {
                     topRatedAdapter.setData(it.results)
                    toprated_recyclerview.adapter = topRatedAdapter
+                    val snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
+                    snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
                 }
                 else -> {
 
