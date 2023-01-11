@@ -23,7 +23,7 @@
            app:layout_constraintTop_toTopOf="parent"
            app:layout_constraintStart_toStartOf="parent"/>
        <TextView
-           android:id="@+id/seeAll_TextView"
+           android:id="@+id/nowplay_seeAll_TextView"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            app:layout_constraintEnd_toEndOf="parent"
@@ -61,11 +61,11 @@
            app:layout_constraintStart_toStartOf="parent"/>
 
        <TextView
-           android:id="@+id/seeAll2_TextView"
+           android:id="@+id/popular_seeAll_TextView"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           app:layout_constraintEnd_toEndOf="@id/seeAll_TextView"
-           app:layout_constraintStart_toStartOf="@id/seeAll_TextView"
+           app:layout_constraintEnd_toEndOf="@id/nowplay_seeAll_TextView"
+           app:layout_constraintStart_toStartOf="@id/nowplay_seeAll_TextView"
            app:layout_constraintTop_toBottomOf="@id/nowplaying_recyclerview"
            android:text="@string/see_all"
            android:textColor="@color/cyan"
@@ -96,7 +96,7 @@
            android:textStyle="bold"/>
 
        <TextView
-           android:id="@+id/seeAll3_TextView"
+           android:id="@+id/toprated_seeAll_TextView"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:text="@string/see_all"
@@ -104,8 +104,8 @@
            android:textSize="18sp"
            android:padding="18dp"
            android:layout_marginStart="28dp"
-           app:layout_constraintEnd_toEndOf="@id/seeAll2_TextView"
-           app:layout_constraintStart_toStartOf="@id/seeAll2_TextView"
+           app:layout_constraintEnd_toEndOf="@id/popular_seeAll_TextView"
+           app:layout_constraintStart_toStartOf="@id/popular_seeAll_TextView"
            app:layout_constraintTop_toBottomOf="@id/popular_recyclerview"/>
        <androidx.recyclerview.widget.RecyclerView
            android:id="@+id/toprated_recyclerview"

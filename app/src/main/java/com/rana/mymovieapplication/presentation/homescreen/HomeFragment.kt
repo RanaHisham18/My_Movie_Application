@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
@@ -35,8 +36,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         return inflater.inflate(
-            R.layout.fragment_home, container,
-            false
+            R.layout.fragment_home, container, false
         )
     }
 
@@ -44,31 +44,26 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //first Rv
         playingNowAdapter = NowPlayingAdapter()
+        val snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
+        snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
 
         nowplaying_recyclerview.layoutManager = LinearLayoutManager(
-            activity, LinearLayoutManager.HORIZONTAL,
-            false
+            activity, LinearLayoutManager.HORIZONTAL, false
         )
-
-
 
 
         //Second Rv
         popularFilmsAdapter = PopularFilmsAdapter()
 
         popular_recyclerview.layoutManager = LinearLayoutManager(
-            activity, LinearLayoutManager.HORIZONTAL,
-            false
+            activity, LinearLayoutManager.HORIZONTAL, false
         )
 
         //third Rv
         topRatedAdapter = TopRatedAdapter()
         toprated_recyclerview.layoutManager = LinearLayoutManager(
-            activity, LinearLayoutManager.HORIZONTAL,
-            false
+            activity, LinearLayoutManager.HORIZONTAL, false
         )
-
-
 
         viewModel.getNowPlaying()
         viewModel.nowPlayingLiveData.observe(viewLifecycleOwner) {
@@ -101,15 +96,33 @@ class HomeFragment : Fragment() {
             when (it is TopRatedModel) {
                 true -> {
                     topRatedAdapter.setData(it.results)
-                   toprated_recyclerview.adapter = topRatedAdapter
-                    val snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
-                    snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
+                    toprated_recyclerview.adapter = topRatedAdapter
+
                 }
                 else -> {
 
                 }
+            }
+
         }
 
-    }
+      //to be checked
+        nowplay_seeAll_TextView.setOnClickListener{
+         val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.nowPlayingSeeAllFragment)
+        }
 
-} }
+       popular_seeAll_TextView.setOnClickListener{
+            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.popularSeeAllFragment)
+        }
+       toprated_seeAll_TextView.setOnClickListener{
+            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+            val navController = navHostFragment.navController
+            navController.navigate(R.id.topRatedSeeAllFragment)
+        }
+
+
+    } }
