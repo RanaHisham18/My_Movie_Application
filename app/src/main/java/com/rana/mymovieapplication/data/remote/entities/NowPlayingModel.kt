@@ -4,7 +4,7 @@ import com.google.gson.annotations.JsonAdapter
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class NowPlayingModel(
+data class  NowPlayingModel(
     val dates: Dates,
     val page: Int,
     val results: List<Result>,
