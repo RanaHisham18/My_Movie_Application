@@ -1,9 +1,8 @@
 package com.rana.mymovieapplication.data.remote.repository
 
 import com.rana.mymovieapplication.BuildConfig
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
-import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
+import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.services.MovieCategoryService
 import com.rana.mymovieapplication.services.NowPlayingService
 import com.rana.mymovieapplication.services.PopularService
 import com.rana.mymovieapplication.services.TopRatedService
@@ -17,6 +16,7 @@ class MoviesRepository(
     private val nowPlayingService: NowPlayingService,
     private val topRatedService: TopRatedService,
     private val popularService: PopularService,
+    private val categoryService: MovieCategoryService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler
 ) {
@@ -48,6 +48,11 @@ class MoviesRepository(
             .observeOn(mainScheduler)
 
 
+
+    fun getCategory(apiKey: String = BuildConfig.API_KEY,
+                    page: Int
+    ): Single<MovieCategoryModel> = categoryService.getCategory(apiKey, page = page).subscribeOn(ioScheduler)
+        .observeOn(mainScheduler)
 }
 
 

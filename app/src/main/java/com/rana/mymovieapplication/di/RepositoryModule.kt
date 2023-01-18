@@ -10,6 +10,7 @@ val moviesRepositoryModule = module {
             nowPlayingService = get(),
             topRatedService = get(),
             popularService = get(),
+            categoryService = get(),
             ioScheduler = get(named("io")),
             mainScheduler = get(named("main"))
         )

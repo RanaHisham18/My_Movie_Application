@@ -106,23 +106,29 @@ class HomeFragment : Fragment() {
 
         }
 
+
+
       //to be checked
-        nowplay_seeAll_TextView.setOnClickListener{
+        nowplay_seeAll_TextView.setOnClickListener (View.OnClickListener {
          val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.nowPlayingSeeAllFragment)
-        }
+        })
 
-       popular_seeAll_TextView.setOnClickListener{
+       popular_seeAll_TextView.setOnClickListener(View.OnClickListener {
             val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.popularSeeAllFragment)
-        }
-       toprated_seeAll_TextView.setOnClickListener{
+        })
+
+       toprated_seeAll_TextView.setOnClickListener(View.OnClickListener {
             val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.topRatedSeeAllFragment)
-        }
+        })
+
+
+
 
 
     } }

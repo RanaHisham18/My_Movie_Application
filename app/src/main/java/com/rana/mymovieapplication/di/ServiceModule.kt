@@ -1,6 +1,7 @@
 package com.rana.mymovieapplication.di
 
 import com.rana.mymovieapplication.BuildConfig
+import com.rana.mymovieapplication.services.MovieCategoryService
 import com.rana.mymovieapplication.services.NowPlayingService
 import com.rana.mymovieapplication.services.PopularService
 import com.rana.mymovieapplication.services.TopRatedService
@@ -29,5 +30,9 @@ val serviceModule = module {
 
     factory {
         get<Retrofit>().create(PopularService::class.java)
+    }
+
+    factory {
+        get<Retrofit>().create(MovieCategoryService::class.java)
     }
 }

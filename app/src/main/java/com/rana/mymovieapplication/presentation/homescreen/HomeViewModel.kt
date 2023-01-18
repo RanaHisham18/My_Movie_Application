@@ -3,6 +3,7 @@ package com.rana.mymovieapplication.presentation.homescreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
@@ -72,6 +73,28 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
             topRatedResult.value = topratedModel
         },
             { errorThrowable -> topRatedMError.value = errorThrowable.localizedMessage })
+
+
+    }
+
+
+    private val movievategoryResult: MutableLiveData<MovieCategoryModel> by lazy {
+        MutableLiveData()
+    }
+
+    val MovieCategoryLiveData: LiveData<MovieCategoryModel> = movievategoryResult
+
+
+    private val movieCategoryMError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val movieCategoryError: LiveData<TopRatedModel> by lazy {
+        MutableLiveData()
+    }
+    fun getCategory(){
+        moviesRepository.getCategory(page = 1).subscribe({ moviecategoryModel ->
+            movievategoryResult.value = moviecategoryModel },
+            { errorThrowable -> movieCategoryMError.value = errorThrowable.localizedMessage })
 
 
     }
