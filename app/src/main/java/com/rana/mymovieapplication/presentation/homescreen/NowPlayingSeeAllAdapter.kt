@@ -27,7 +27,7 @@ class NowPlayingSeeAllAdapter: RecyclerView.Adapter<NowPlayingSeeAllAdapter.MyVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.nowplaying_seeall_rv_item,
             parent, false)
-        return NowPlayingSeeAllAdapter.MyViewHolder(view)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -37,6 +37,10 @@ class NowPlayingSeeAllAdapter: RecyclerView.Adapter<NowPlayingSeeAllAdapter.MyVi
 
     override fun getItemCount(): Int {
         return movies.size
+    }
+
+    fun setData(movies: List<NowPlayingModel.Result>) {
+        this.movies = movies
     }
 
 }

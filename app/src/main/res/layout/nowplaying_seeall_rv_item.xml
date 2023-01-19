@@ -2,14 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded"
+    android:layout_margin="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/nowplaying_seeall_IV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="18dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_dialog_email" />
@@ -18,10 +20,11 @@
         android:id="@+id/nowplaying_seeall_filmname_TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:textColor="@color/white"
         android:text="Film Name"
         android:textSize="18sp"
         android:textStyle="italic"
+        android:gravity="right"
         app:layout_constraintStart_toEndOf="@id/nowplaying_seeall_IV"
         tools:layout_editor_absoluteY="24dp"
         tools:ignore="MissingConstraints" />
@@ -30,6 +33,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="film Categoty"
+        android:textColor="@color/white"
+        android:gravity="right"
         app:layout_constraintTop_toBottomOf="@id/nowplaying_seeall_filmname_TV"
         app:layout_constraintStart_toStartOf="@id/nowplaying_seeall_filmname_TV"
         app:layout_constraintEnd_toEndOf="@id/nowplaying_seeall_filmname_TV"/>
@@ -47,9 +52,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3.67"
+        android:maxLines="1"
+        android:textColor="@color/white"
         android:layout_margin="8dp"
         app:layout_constraintStart_toEndOf="@id/nowplaying_seeall_ratingstar_IV"
         app:layout_constraintTop_toBottomOf="@id/nowplaying_seeall_filmcategory_Tv"
         app:layout_constraintEnd_toEndOf="@id/nowplaying_seeall_filmcategory_Tv"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

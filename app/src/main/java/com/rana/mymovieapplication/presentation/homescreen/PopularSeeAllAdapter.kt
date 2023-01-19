@@ -30,7 +30,7 @@ class PopularSeeAllAdapter: RecyclerView.Adapter<PopularSeeAllAdapter.MyViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.popularseeall_rv_item,
             parent, false)
-        return PopularSeeAllAdapter.MyViewHolder(view)
+        return MyViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -40,5 +40,9 @@ holder.bind(movies.get(position))
     override fun getItemCount(): Int {
        return movies.size
 
+    }
+
+    fun setData(movies: List<PopularModel.Result>) {
+        this.movies = movies
     }
 }

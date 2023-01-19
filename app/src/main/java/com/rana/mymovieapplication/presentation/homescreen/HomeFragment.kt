@@ -98,6 +98,7 @@ class HomeFragment : Fragment() {
                     topRatedAdapter.setData(it.results)
                     toprated_recyclerview.adapter = topRatedAdapter
 
+
                 }
                 else -> {
 
@@ -107,28 +108,28 @@ class HomeFragment : Fragment() {
         }
 
 
-
-      //to be checked
-        nowplay_seeAll_TextView.setOnClickListener (View.OnClickListener {
-         val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        //to be checked
+        nowplay_seeAll_TextView.setOnClickListener(View.OnClickListener {
+            val navHostFragment =
+                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.nowPlayingSeeAllFragment)
         })
 
-       popular_seeAll_TextView.setOnClickListener(View.OnClickListener {
-            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        popular_seeAll_TextView.setOnClickListener(View.OnClickListener {
+            val navHostFragment =
+                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.popularSeeAllFragment)
         })
 
-       toprated_seeAll_TextView.setOnClickListener(View.OnClickListener {
-            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        toprated_seeAll_TextView.setOnClickListener(View.OnClickListener {
+            val navHostFragment =
+                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
             navController.navigate(R.id.topRatedSeeAllFragment)
         })
 
 
-
-
-
-    } }
+    }
+}

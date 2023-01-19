@@ -3,11 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.homescreen.PopularSeeAllFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/nowplaying_seeall_rv"
             android:layout_width="match_parent"

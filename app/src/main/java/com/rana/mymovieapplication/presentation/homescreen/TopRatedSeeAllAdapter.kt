@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
+import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
 import kotlinx.android.synthetic.main.toprated_seeall_rv_item.view.*
 
@@ -36,5 +37,9 @@ class TopRatedSeeAllAdapter : RecyclerView.Adapter<TopRatedSeeAllAdapter.MyViewH
 
     override fun getItemCount(): Int {
         return movies.size
+    }
+
+    fun setData(movies: List<TopRatedModel.Result>) {
+        this.movies = movies
     }
 }
