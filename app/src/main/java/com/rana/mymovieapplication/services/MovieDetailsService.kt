@@ -17,6 +17,6 @@ interface MovieDetailsService {
         language: String = "en-US",
         @Query("page")
         page : Int
-    ): Single<//TODO>
+    ): Single<MovieDetailsService>
 
 }
