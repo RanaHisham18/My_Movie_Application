@@ -1,5 +1,7 @@
 package com.rana.mymovieapplication.presentation.homescreen
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+import com.rana.mymovieapplication.utils.desrialize
 import kotlinx.android.synthetic.main.nowplaying_rv_item.view.*
 
 class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>() {
@@ -15,16 +18,21 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
 
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         fun bind(movie: NowPlayingModel.Result) {
             itemView.filmnameTV.text = movie.original_title
-            itemView.filmcategoryTV.text = movie.genre_ids.toString()
+
             itemView.rating_count_number_TV.text = movie.vote_count.toString()
             itemView.rating_average_number_TV.text = movie.vote_average.toString()
             itemView.card_background.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
             itemView.imageslider.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
 
+            val preferences: SharedPreferences= itemView.context.getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+            val preferencesList = preferences.all
+            preferences.getString("My Movie Application", String().desrialize())
+            preferencesList.get(movie.genre_ids.toString())
+            itemView.filmcategoryTV.text = preferencesList.toString()
         }
-
 
     }
 
