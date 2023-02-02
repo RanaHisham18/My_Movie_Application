@@ -1,20 +1,13 @@
 package com.rana.mymovieapplication.data.remote.repository
 
-import android.content.Context
 import android.content.SharedPreferences
-import android.provider.Settings.Global.putString
 import com.rana.mymovieapplication.BuildConfig
 import com.rana.mymovieapplication.data.remote.entities.*
-import com.rana.mymovieapplication.services.MovieCategoryService
-import com.rana.mymovieapplication.services.NowPlayingService
-import com.rana.mymovieapplication.services.PopularService
-import com.rana.mymovieapplication.services.TopRatedService
+import com.rana.mymovieapplication.services.*
+import com.rana.mymovieapplication.utils.desrialize
 import com.rana.mymovieapplication.utils.serialize
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
-import java.util.logging.SocketHandler
 
 
 class MoviesRepository(
@@ -22,8 +15,10 @@ class MoviesRepository(
     private val topRatedService: TopRatedService,
     private val popularService: PopularService,
     private val categoryService: MovieCategoryService,
+    private val detailsService: MovieDetailsService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler,
+    private val sharedPreferences: SharedPreferences
 ) {
 
     fun getNowPlayingFilms(
@@ -57,12 +52,24 @@ class MoviesRepository(
         page: Int
     ): Single<MovieCategoryModel> =
         categoryService.getCategory(apiKey, page = page).subscribeOn(ioScheduler)
+            .observeOn(mainScheduler).doOnSuccess {
+                val editor = sharedPreferences.edit()
+
+                editor.apply {
+                    putString("My Movie Application", it.genres.serialize())
+                }
+
+            }
+
+
+    fun getDetails(
+        movieId: String.Companion,
+        apiKey: String = BuildConfig.API_KEY,
+        page: Int
+    ): Single<MovieDetailsModel> =
+        detailsService.getDetails(movieId.toString(), apiKey, page = page).subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
-
-
-
 }
-
 
 
 

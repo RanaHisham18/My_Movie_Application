@@ -9,16 +9,21 @@ import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import kotlinx.android.synthetic.main.popular_rv_item.view.*
 
-class PopularFilmsAdapter : RecyclerView.Adapter<PopularFilmsAdapter.MyViewHolder>() {
+class PopularFilmsAdapter(val movieItemCallBack: (movieId: Long) -> Unit) : RecyclerView.Adapter<PopularFilmsAdapter.MyViewHolder>() {
     private var movies = emptyList<PopularModel.Result>()
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(itemView: View ,  val movieItemCallBack : (movieId : Long) -> Unit) : RecyclerView.ViewHolder(itemView) {
         fun bind(movie: PopularModel.Result) {
             itemView.popularfilmname_Tv.text = movie.title
             itemView.popularfilmcategory_TV.text = movie.genre_ids.toString()
             itemView.ratingnumber_count_TV.text = movie.vote_count.toString()
             itemView.ratingnumber_average_TV.text = movie.vote_average.toString()
             itemView.popular_IV.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
+
+            itemView.popular_card.setOnClickListener(){
+                movieItemCallBack(movie.id.toLong())
+            }
+
         }
 
     }
@@ -28,11 +33,11 @@ class PopularFilmsAdapter : RecyclerView.Adapter<PopularFilmsAdapter.MyViewHolde
             R.layout.popular_rv_item,
             parent, false
         )
-        return MyViewHolder(view)
+        return MyViewHolder(view, movieItemCallBack)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movies.get(position))
+        holder.bind(movies[position])
     }
 
     override fun getItemCount(): Int {

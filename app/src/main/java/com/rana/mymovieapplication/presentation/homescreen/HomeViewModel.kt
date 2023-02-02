@@ -3,10 +3,7 @@ package com.rana.mymovieapplication.presentation.homescreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
-import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
+import com.rana.mymovieapplication.data.remote.entities.*
 import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
@@ -78,11 +75,11 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     }
 
 
-    private val movievategoryResult: MutableLiveData<MovieCategoryModel> by lazy {
+    private val moviecategoryResult: MutableLiveData<MovieCategoryModel> by lazy {
         MutableLiveData()
     }
 
-    val MovieCategoryLiveData: LiveData<MovieCategoryModel> = movievategoryResult
+    val MovieCategoryLiveData: LiveData<MovieCategoryModel> = moviecategoryResult
 
 
     private val movieCategoryMError: MutableLiveData<String> by lazy {
@@ -93,8 +90,29 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     }
     fun getCategory(){
         moviesRepository.getCategory(page = 1).subscribe({ moviecategoryModel ->
-            movievategoryResult.value = moviecategoryModel },
+            moviecategoryResult.value = moviecategoryModel },
             { errorThrowable -> movieCategoryMError.value = errorThrowable.localizedMessage })
+
+
+    }
+
+    private val movievdetailsResult: MutableLiveData<MovieDetailsModel> by lazy {
+        MutableLiveData()
+    }
+
+    val MovieDetailsLiveData: LiveData<MovieDetailsModel> = movievdetailsResult
+
+
+    private val movieDetailsMError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val moviedetailsError: LiveData<MovieDetailsModel> by lazy {
+        MutableLiveData()
+    }
+    fun getDetails(){
+        moviesRepository.getDetails( movieId = String, page = 1).subscribe({ moviedetailsModel ->
+            movievdetailsResult.value = moviedetailsModel },
+            { errorThrowable -> movieDetailsMError.value = errorThrowable.localizedMessage })
 
 
     }

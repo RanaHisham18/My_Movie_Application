@@ -7,20 +7,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.rana.mymovieapplication.R
-import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
-import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
-import com.rana.mymovieapplication.utils.desrialize
-import com.rana.mymovieapplication.utils.serialize
+import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.popular_rv_item.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -36,6 +33,7 @@ class HomeFragment : Fragment() {
     private lateinit var topRatedAdapter: TopRatedAdapter
 
     private val viewModel: HomeViewModel by viewModel()
+    private lateinit var movieId: String
 
 
     override fun onCreateView(
@@ -58,9 +56,12 @@ class HomeFragment : Fragment() {
             activity, LinearLayoutManager.HORIZONTAL, false
         )
 
-
         //Second Rv
-        popularFilmsAdapter = PopularFilmsAdapter()
+        popularFilmsAdapter = PopularFilmsAdapter(movieItemCallBack = {
+            findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToMovieDetailFragment(it))
+
+        })
 
         popular_recyclerview.layoutManager = LinearLayoutManager(
             activity, LinearLayoutManager.HORIZONTAL, false
@@ -119,17 +120,10 @@ class HomeFragment : Fragment() {
                     val sharedPreferences: SharedPreferences = requireActivity()
                         .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
 
-                    sharedPreferences.edit {
-                        putString("My Movie Application", it.serialize())
-
-                    }
                     Log.d(
                         HomeFragment::class.java.simpleName,
                         "First Category  " + it.genres[0].id.toString() + " " + it.genres[0].name
                     )
-
-
-
 
                     Log.d(
                         HomeFragment::class.java.simpleName,
@@ -166,5 +160,10 @@ class HomeFragment : Fragment() {
         })
 
 
+
+
     }
+
 }
+
+

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import kotlinx.android.synthetic.main.popularseeall_rv_item.view.*
 

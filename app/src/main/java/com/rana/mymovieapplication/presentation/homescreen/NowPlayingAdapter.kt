@@ -2,13 +2,16 @@ package com.rana.mymovieapplication.presentation.homescreen
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment
 import com.rana.mymovieapplication.utils.desrialize
 import kotlinx.android.synthetic.main.nowplaying_rv_item.view.*
 
@@ -27,12 +30,18 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
             itemView.card_background.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
             itemView.imageslider.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
 
-            val preferences: SharedPreferences= itemView.context.getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
-            val preferencesList = preferences.all
-            preferences.getString("My Movie Application", String().desrialize())
-            preferencesList.get(movie.genre_ids.toString())
-            itemView.filmcategoryTV.text = preferencesList.toString()
+            val preferences: SharedPreferences = itemView.context
+                .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+            itemView.filmcategoryTV.text = preferences.toString()
+
+//            val desData =
+//                sharedPreferences.getString("My Movie Application", String().desrialize())
+
+
+
         }
+
+
 
     }
 
@@ -46,7 +55,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(movies.get(position))
+        holder.bind(movies[position])
     }
 
     override fun getItemCount(): Int {
@@ -56,4 +65,6 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
     fun setData(movies: List<NowPlayingModel.Result>) {
         this.movies = movies
     }
+
+
 }

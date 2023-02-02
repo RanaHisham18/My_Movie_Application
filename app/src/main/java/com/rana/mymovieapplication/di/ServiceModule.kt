@@ -1,10 +1,7 @@
 package com.rana.mymovieapplication.di
 
 import com.rana.mymovieapplication.BuildConfig
-import com.rana.mymovieapplication.services.MovieCategoryService
-import com.rana.mymovieapplication.services.NowPlayingService
-import com.rana.mymovieapplication.services.PopularService
-import com.rana.mymovieapplication.services.TopRatedService
+import com.rana.mymovieapplication.services.*
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -34,5 +31,9 @@ val serviceModule = module {
 
     factory {
         get<Retrofit>().create(MovieCategoryService::class.java)
+    }
+
+    factory{
+        get<Retrofit>().create(MovieDetailsService::class.java)
     }
 }
