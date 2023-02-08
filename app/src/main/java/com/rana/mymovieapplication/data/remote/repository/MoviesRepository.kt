@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import com.rana.mymovieapplication.BuildConfig
 import com.rana.mymovieapplication.data.remote.entities.*
 import com.rana.mymovieapplication.services.*
-import com.rana.mymovieapplication.utils.desrialize
 import com.rana.mymovieapplication.utils.serialize
 import io.reactivex.rxjava3.core.Scheduler
 import io.reactivex.rxjava3.core.Single
@@ -16,6 +15,7 @@ class MoviesRepository(
     private val popularService: PopularService,
     private val categoryService: MovieCategoryService,
     private val detailsService: MovieDetailsService,
+    private val trailerService: MovieTrailerService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler,
     private val sharedPreferences: SharedPreferences
@@ -63,11 +63,20 @@ class MoviesRepository(
 
 
     fun getDetails(
-        movieId: String.Companion,
+        movieId: Long,
         apiKey: String = BuildConfig.API_KEY,
         page: Int
     ): Single<MovieDetailsModel> =
-        detailsService.getDetails(movieId.toString(), apiKey, page = page).subscribeOn(ioScheduler)
+        detailsService.getDetails(movieId, apiKey, page = page).subscribeOn(ioScheduler)
+            .observeOn(mainScheduler)
+
+
+    fun getTrailer(
+        movieId: Long,
+        apiKey: String = BuildConfig.API_KEY,
+        page: Int
+    ): Single<MovieTrailerModel> =
+        trailerService.getTrailer(movieId, apiKey, page = page).subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
 }
 

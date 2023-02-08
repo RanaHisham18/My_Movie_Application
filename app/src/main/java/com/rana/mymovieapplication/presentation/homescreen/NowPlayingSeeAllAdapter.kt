@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import kotlinx.android.synthetic.main.nowplaying_rv_item.view.*
 import kotlinx.android.synthetic.main.nowplaying_seeall_rv_item.view.*
 
 class NowPlayingSeeAllAdapter: RecyclerView.Adapter<NowPlayingSeeAllAdapter.MyViewHolder> (){

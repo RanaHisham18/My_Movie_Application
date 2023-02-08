@@ -1,7 +1,9 @@
 package com.rana.mymovieapplication.presentation.homescreen
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,16 +13,21 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+import com.rana.mymovieapplication.presentation.MainActivity
 import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment
 import com.rana.mymovieapplication.utils.desrialize
 import kotlinx.android.synthetic.main.nowplaying_rv_item.view.*
 
-class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>() {
+class NowPlayingAdapter(val movieItemCallBack: (movieId: Long) -> Unit) :
+    RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>() {
 
     private var movies = emptyList<NowPlayingModel.Result>()
 
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MyViewHolder(
+        itemView: View, val movieItemCallBack:
+            (movieId: Long) -> Unit
+    ) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(movie: NowPlayingModel.Result) {
             itemView.filmnameTV.text = movie.original_title
@@ -38,9 +45,12 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
 //                sharedPreferences.getString("My Movie Application", String().desrialize())
 
 
+            itemView.sliderCardView.setOnClickListener() {
+                movieItemCallBack(movie.id.toLong())
+            }
+
 
         }
-
 
 
     }
@@ -50,7 +60,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>()
             R.layout.nowplaying_rv_item,
             parent, false
         )
-        return MyViewHolder(view)
+        return MyViewHolder(view, movieItemCallBack)
 
     }
 

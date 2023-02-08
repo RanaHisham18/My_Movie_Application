@@ -28,7 +28,7 @@ class TopRatedSeeAllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       TopRatedSeeAllAdapter = TopRatedAdapter()
+       TopRatedSeeAllAdapter = TopRatedSeeAllAdapter
        toprated_seeall_rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,
            false)
         toprated_seeall_rv.adapter = TopRatedSeeAllAdapter

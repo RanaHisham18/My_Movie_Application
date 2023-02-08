@@ -48,7 +48,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //first Rv
-        playingNowAdapter = NowPlayingAdapter()
+        playingNowAdapter = NowPlayingAdapter(movieItemCallBack = {
+            findNavController().navigate(
+                HomeFragmentDirections
+                    .actionHomeFragmentToMovieDetailFragment(it)
+            )
+
+        })
         val snapHelperPlayingNow: SnapHelper = LinearSnapHelper()
         snapHelperPlayingNow.attachToRecyclerView(nowplaying_recyclerview)
 
@@ -58,8 +64,10 @@ class HomeFragment : Fragment() {
 
         //Second Rv
         popularFilmsAdapter = PopularFilmsAdapter(movieItemCallBack = {
-            findNavController().navigate(HomeFragmentDirections
-                .actionHomeFragmentToMovieDetailFragment(it))
+            findNavController().navigate(
+                HomeFragmentDirections
+                    .actionHomeFragmentToMovieDetailFragment(it)
+            )
 
         })
 
@@ -68,7 +76,11 @@ class HomeFragment : Fragment() {
         )
 
         //third Rv
-        topRatedAdapter = TopRatedAdapter()
+        topRatedAdapter = TopRatedAdapter(movieItemCallBack = {
+            findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToMovieDetailFragment(it))
+
+        })
         toprated_recyclerview.layoutManager = LinearLayoutManager(
             activity, LinearLayoutManager.HORIZONTAL, false
         )
@@ -158,8 +170,6 @@ class HomeFragment : Fragment() {
             val navController = navHostFragment.navController
             navController.navigate(R.id.topRatedSeeAllFragment)
         })
-
-
 
 
     }

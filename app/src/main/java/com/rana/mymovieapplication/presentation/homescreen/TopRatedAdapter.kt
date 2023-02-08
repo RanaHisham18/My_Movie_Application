@@ -10,10 +10,12 @@ import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
 import kotlinx.android.synthetic.main.toprated_rv_item.view.*
 
-class TopRatedAdapter: RecyclerView.Adapter<TopRatedAdapter.MyViewHolder> () {
+class TopRatedAdapter(val movieItemCallBack: (movieId: Long) -> Unit)
+    : RecyclerView.Adapter<TopRatedAdapter.MyViewHolder> () {
 
     private var movies = emptyList<TopRatedModel.Result>()
-    class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
+    class MyViewHolder (itemView: View, val movieItemCallBack: (movieId: Long) -> Unit)
+        : RecyclerView.ViewHolder(itemView){
         fun bind(movie:TopRatedModel.Result){
 
             itemView.toprated_filmname_Tv.text = movie.original_title
@@ -27,7 +29,7 @@ class TopRatedAdapter: RecyclerView.Adapter<TopRatedAdapter.MyViewHolder> () {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.toprated_rv_item,
             parent, false)
-        return TopRatedAdapter.MyViewHolder(view)
+        return TopRatedAdapter.MyViewHolder(view, movieItemCallBack)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

@@ -109,11 +109,33 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val moviedetailsError: LiveData<MovieDetailsModel> by lazy {
         MutableLiveData()
     }
-    fun getDetails(){
-        moviesRepository.getDetails( movieId = String, page = 1).subscribe({ moviedetailsModel ->
+    fun getDetails(movieId : Long){
+        moviesRepository.getDetails( movieId = movieId, page = 1).subscribe({ moviedetailsModel ->
             movievdetailsResult.value = moviedetailsModel },
             { errorThrowable -> movieDetailsMError.value = errorThrowable.localizedMessage })
 
 
     }
+
+
+    private val movievTrailerResult: MutableLiveData<MovieTrailerModel> by lazy {
+        MutableLiveData()
+    }
+
+    val MovieTrailerLiveData: LiveData<MovieTrailerModel> = movievTrailerResult
+
+    private val movieTrailerMError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val movieTrailerError: LiveData<MovieDetailsModel> by lazy {
+        MutableLiveData()
+    }
+    fun getTrailer(movieId : Long){
+        moviesRepository.getTrailer( movieId = movieId, page = 1).subscribe({ movietrailerModel ->
+            movievTrailerResult.value = movietrailerModel },
+            { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
+
+
+    }
+
 }
