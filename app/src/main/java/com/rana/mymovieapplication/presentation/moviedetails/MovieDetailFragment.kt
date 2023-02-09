@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,7 +55,10 @@ class MovieDetailFragment : Fragment() {
 
                 }
 
-                else -> {}
+                else -> {
+                  // movieDetail_overviewText_Tv.visibility = View.VISIBLE
+                   // movieDetail_duration_Tv.visibility = View.GONE
+                }
             }
 
 

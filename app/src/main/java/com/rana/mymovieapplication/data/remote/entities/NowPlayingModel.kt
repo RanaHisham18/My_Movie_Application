@@ -1,6 +1,5 @@
 package com.rana.mymovieapplication.data.remote.entities
 
-import com.google.gson.annotations.JsonAdapter
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)

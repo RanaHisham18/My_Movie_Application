@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.*
-import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.popular_rv_item.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -33,8 +31,6 @@ class HomeFragment : Fragment() {
     private lateinit var topRatedAdapter: TopRatedAdapter
 
     private val viewModel: HomeViewModel by viewModel()
-    private lateinit var movieId: String
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

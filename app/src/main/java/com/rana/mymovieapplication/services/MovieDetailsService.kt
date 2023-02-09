@@ -1,9 +1,6 @@
 package com.rana.mymovieapplication.services
 
-import android.telecom.Call
-import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel
 import com.rana.mymovieapplication.data.remote.entities.MovieDetailsModel
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

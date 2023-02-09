@@ -13,7 +13,7 @@ class MovieTrailerAdapter: RecyclerView.Adapter<MovieTrailerAdapter.MyViewHolder
     private var movies = emptyList<MovieTrailerModel.Result>()
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
      fun bind (movie: MovieTrailerModel.Result){
-       //Todo
+
      }
     }
 
