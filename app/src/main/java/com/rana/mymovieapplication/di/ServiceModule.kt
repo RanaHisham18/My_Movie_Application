@@ -35,5 +35,8 @@ val serviceModule = module {
     factory {
         get<Retrofit>().create(MovieTrailerService::class.java)
     }
+    factory{
+        get<Retrofit>().create(MovieReviewsService::class.java)
+    }
 
 }

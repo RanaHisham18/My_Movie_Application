@@ -16,6 +16,7 @@ class MoviesRepository(
     private val categoryService: MovieCategoryService,
     private val detailsService: MovieDetailsService,
     private val trailerService: MovieTrailerService,
+    private val reviewsService: MovieReviewsService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler,
     private val sharedPreferences: SharedPreferences
@@ -78,6 +79,15 @@ class MoviesRepository(
     ): Single<MovieTrailerModel> =
         trailerService.getTrailer(movieId, apiKey, page = page).subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
+
+
+    fun getReviews(
+        movieId: Long,
+        apiKey: String,
+        page: Int
+    ): Single<MovieReviewsModel> = reviewsService.getReviews(movieId, apiKey, page = page)
+        .subscribeOn(ioScheduler)
+        .observeOn(mainScheduler)
 }
 
 

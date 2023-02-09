@@ -1,257 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     tools:context=".presentation.reviewscreen.ReviewsFragment">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/movieReviews_white_back_arrow_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/movieReviews_reviews_TV"
-        app:layout_constraintBottom_toBottomOf="@id/movieReviews_reviews_TV"
-        app:layout_constraintEnd_toStartOf="@id/movieReviews_reviews_TV"
-        android:src="@drawable/white_arrow"/>
-
-    <TextView
-        android:id="@+id/movieReviews_reviews_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reviews"
-        android:textColor="@color/white"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@id/movieReviews_white_back_arrow_TV" />
-
-    <ImageView
-        android:id="@+id/reviews_Userphoto_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/movieReviews_reviews_TV"/>
-
-    <TextView
-        android:id="@+id/reviews_username_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto_Iv"
-        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto_Iv"
-        android:layout_marginStart="12dp"
-        android:text="Rana Hisham"/>
-    <TextView
-        android:id="@+id/reviews_review_dateTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="18/2/2001"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto_Iv"
-        app:layout_constraintEnd_toEndOf="@id/reviews_username_Tv"
-        app:layout_constraintTop_toBottomOf="@id/reviews_username_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_review_text_Tv"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
-            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviews_review_dateTV"/>
+        android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/reviews_Userphoto2_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/reviews_review_text_Tv" />
+        <ImageView
+            android:id="@+id/movieReviews_white_back_arrow_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/white_arrow"
+            app:layout_constraintBottom_toBottomOf="@id/movieReviews_reviews_TV"
+            app:layout_constraintEnd_toStartOf="@id/movieReviews_reviews_TV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/movieReviews_reviews_TV" />
 
-    <TextView
-        android:id="@+id/reviews_username2_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto2_Iv"
-        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto2_Iv"
-        android:layout_marginStart="12dp"
-        android:text="Rana Hisham"/>
-    <TextView
-        android:id="@+id/reviews_review_date2_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="18/2/2001"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto2_Iv"
-        app:layout_constraintEnd_toEndOf="@id/reviews_username2_Tv"
-        app:layout_constraintTop_toBottomOf="@id/reviews_username2_Tv" />
+        <TextView
+            android:id="@+id/movieReviews_reviews_TV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/reviews"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/movieReviews_white_back_arrow_TV"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/reviews_review_text2_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
-            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviews_review_date2_TV"/>
-
-    <ImageView
-        android:id="@+id/reviews_Userphoto3_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/reviews_review_text2_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_username3_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto3_Iv"
-        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto3_Iv"
-        android:layout_marginStart="12dp"
-        android:text="Rana Hisham"/>
-    <TextView
-        android:id="@+id/reviews_review_date3_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="18/2/2001"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto3_Iv"
-        app:layout_constraintEnd_toEndOf="@id/reviews_username3_Tv"
-        app:layout_constraintTop_toBottomOf="@id/reviews_username3_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_review_text3_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
-            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviews_review_date3_TV"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviews_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/movieReviews_reviews_TV" />
 
 
-
-
-    <ImageView
-        android:id="@+id/reviews_Userphoto4_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/reviews_review_text3_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_username4_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto4_Iv"
-        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto4_Iv"
-        android:layout_marginStart="12dp"
-        android:text="Rana Hisham"/>
-    <TextView
-        android:id="@+id/reviews_review_date4_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="18/2/2001"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto4_Iv"
-        app:layout_constraintEnd_toEndOf="@id/reviews_username4_Tv"
-        app:layout_constraintTop_toBottomOf="@id/reviews_username4_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_review_text4_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
-            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviews_review_date4_TV"/>
-
-
-
-
-
-    <ImageView
-        android:id="@+id/reviews_Userphoto5_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_baseline_supervised_user_circle_24"
-        app:layout_constraintTop_toBottomOf="@+id/reviews_review_text4_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_username5_Tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto5_Iv"
-        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto5_Iv"
-        android:layout_marginStart="12dp"
-        android:text="Rana Hisham"/>
-    <TextView
-        android:id="@+id/reviews_review_date5_TV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="18/2/2001"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto5_Iv"
-        app:layout_constraintEnd_toEndOf="@id/reviews_username5_Tv"
-        app:layout_constraintTop_toBottomOf="@id/reviews_username5_Tv" />
-
-    <TextView
-        android:id="@+id/reviews_review_text5_Tv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
-            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
-        android:textColor="@color/white"
-        tools:ignore="HardcodedText"
-        android:padding="12dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/reviews_review_date5_TV"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

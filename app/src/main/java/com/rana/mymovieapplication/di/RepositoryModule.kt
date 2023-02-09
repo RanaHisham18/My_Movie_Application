@@ -15,6 +15,7 @@ val moviesRepositoryModule = module {
             categoryService = get(),
             detailsService = get(),
             trailerService = get(),
+            reviewsService = get(),
             ioScheduler = get(named("io")),
             mainScheduler = get(named("main")),
             sharedPreferences = androidApplication().getSharedPreferences(

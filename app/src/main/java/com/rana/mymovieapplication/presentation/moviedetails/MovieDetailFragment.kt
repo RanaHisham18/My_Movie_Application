@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.MovieDetailsModel
+import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
 import com.rana.mymovieapplication.presentation.homescreen.HomeFragmentDirections
 import com.rana.mymovieapplication.presentation.homescreen.HomeViewModel
 import com.rana.mymovieapplication.presentation.homescreen.PopularFilmsAdapter
@@ -56,12 +58,8 @@ class MovieDetailFragment : Fragment() {
                 }
 
                 else -> {
-                  // movieDetail_overviewText_Tv.visibility = View.VISIBLE
-                   // movieDetail_duration_Tv.visibility = View.GONE
                 }
             }
-
-
         }
 
         movieTrailerAdapter = MovieTrailerAdapter()
@@ -69,8 +67,26 @@ class MovieDetailFragment : Fragment() {
             activity, LinearLayoutManager.HORIZONTAL, false
         )
 
+
+        viewModel.getReviews(args.movieId)
+        viewModel.MovieReviewsLiveData.observe(viewLifecycleOwner){
+            when (it is MovieReviewsModel) {
+                true -> {
+                    //to checkkk
+                    movieDetail_Userphoto_Iv.load("https://image.tmdb.org/t/p/original/${it.results[0].author_details.avatar_path}")
+                    movieDetail_username_Tv.text = it.results[0].author
+                    movieDetail_reviews_text_Tv.text =it.results[0].content
+                    movieDetail_review_dateTV.text =it.results[0].created_at
+                }
+                else -> {
+
+                }
+            }
         }
-    }
+
+        movieDetail_seeall_Tv.setOnClickListener (View.OnClickListener {
+            findNavController().navigate(R.id.action_movieDetailFragment_to_reviewsFragment)
+    }) } }
 
 
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black">
+
+
+    <ImageView
+        android:id="@+id/reviews_Userphoto_Iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/reviews_username_Tv"
+        android:src="@drawable/ic_baseline_supervised_user_circle_24"
+       />
+
+    <TextView
+        android:id="@+id/reviews_username_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="@id/reviews_Userphoto_Iv"
+        app:layout_constraintStart_toEndOf="@id/reviews_Userphoto_Iv"
+        android:layout_marginTop="24dp"
+        android:layout_margin="12dp"
+        android:text="Rana Hisham"/>
+    <TextView
+        android:id="@+id/reviews_review_dateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="18/2/2001"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto_Iv"
+        app:layout_constraintEnd_toEndOf="@id/reviews_username_Tv"
+        app:layout_constraintTop_toBottomOf="@id/reviews_username_Tv" />
+
+    <TextView
+        android:id="@+id/reviews_review_text_Tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Once upon a time there was a tavern Where we used to raise a glass or two Remember how we laughed away Think of all the great things we would do Those were the days, my friend We thought they'd never end We'd sing and dance forever and a day
+            We'd live the life we choose We'd fight and never lose For we were young and sure to have our way"
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText"
+        android:padding="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/reviews_review_dateTV"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
