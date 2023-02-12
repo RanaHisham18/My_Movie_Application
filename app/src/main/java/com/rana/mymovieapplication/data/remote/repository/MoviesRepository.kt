@@ -3,6 +3,7 @@ package com.rana.mymovieapplication.data.remote.repository
 import android.content.SharedPreferences
 import com.rana.mymovieapplication.BuildConfig
 import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.data.remote.entities.MovieCastsModel
 import com.rana.mymovieapplication.services.*
 import com.rana.mymovieapplication.utils.serialize
 import io.reactivex.rxjava3.core.Scheduler
@@ -17,6 +18,7 @@ class MoviesRepository(
     private val detailsService: MovieDetailsService,
     private val trailerService: MovieTrailerService,
     private val reviewsService: MovieReviewsService,
+    private val castsService: MovieCastsService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler,
     private val sharedPreferences: SharedPreferences
@@ -88,7 +90,19 @@ class MoviesRepository(
     ): Single<MovieReviewsModel> = reviewsService.getReviews(movieId, apiKey, page = page)
         .subscribeOn(ioScheduler)
         .observeOn(mainScheduler)
+
+
+    fun getCasts( movieId: Long,
+                  apiKey: String,
+                  page: Int
+
+    ):Single<MovieCastsModel> =  castsService.getCast(movieId, apiKey, page = page)
+        .subscribeOn(ioScheduler)
+        .observeOn(mainScheduler)
 }
+
+
+
 
 
 
