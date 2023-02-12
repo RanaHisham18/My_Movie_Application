@@ -165,15 +165,15 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         MutableLiveData()
     }
 
-    val MovieCastsLiveData: LiveData<MovieCastsModel> = movievReviewsResult
+    val MovieCastsLiveData: LiveData<MovieCastsModel> = movievCastsResult
 
-    private val movieReviewsMError: MutableLiveData<String> by lazy {
+    private val movieCastsMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val movieReviewsError: LiveData<MovieReviewsModel> by lazy {
+    val movieCastsError: LiveData<MovieReviewsModel> by lazy {
         MutableLiveData()
     }
-    fun getReviews(movieId : Long){
+    fun getCasts(movieId : Long){
         moviesRepository.getTrailer( movieId = movieId, page = 1).subscribe({ movietrailerModel ->
             movievTrailerResult.value = movietrailerModel },
             { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })

@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.rana.mymovieapplication.R
+import com.rana.mymovieapplication.data.remote.entities.MovieCastsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieDetailsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
 import com.rana.mymovieapplication.presentation.homescreen.HomeFragmentDirections
@@ -86,7 +87,28 @@ class MovieDetailFragment : Fragment() {
 
         movieDetail_seeall_Tv.setOnClickListener (View.OnClickListener {
             findNavController().navigate(R.id.action_movieDetailFragment_to_reviewsFragment)
-    }) } }
+    })
+        viewModel.getCasts(args.movieId)
+        viewModel.MovieCastsLiveData.observe(viewLifecycleOwner){
+            when(it is MovieCastsModel){
+                true -> {
+                  movieDetail_casts_username_Tv.text = it.cast[0].name
+                  movieDetail_casts_username2_Tv.text = it.cast[1].name
+                    movieDetail_casts_userphoto_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[0].profile_path}")
+                    movieDetail_casts_userphoto2_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[1].profile_path}")
+                    movieDetail_casts_category_Tv.text = it.cast[0].known_for_department
+                    movieDetail_casts_category2_Tv.text = it.cast[1].known_for_department
+                }
+                else -> {
+
+                }
+            }
+
+        }
+
+
+
+    } }
 
 
 
