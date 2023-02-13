@@ -3,6 +3,7 @@ package com.rana.mymovieapplication.presentation.homescreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.rana.mymovieapplication.BuildConfig
 import com.rana.mymovieapplication.data.remote.entities.*
 import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
 
@@ -88,9 +89,11 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val movieCategoryError: LiveData<TopRatedModel> by lazy {
         MutableLiveData()
     }
-    fun getCategory(){
+
+    fun getCategory() {
         moviesRepository.getCategory(page = 1).subscribe({ moviecategoryModel ->
-            moviecategoryResult.value = moviecategoryModel },
+            moviecategoryResult.value = moviecategoryModel
+        },
             { errorThrowable -> movieCategoryMError.value = errorThrowable.localizedMessage })
 
 
@@ -109,9 +112,11 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val moviedetailsError: LiveData<MovieDetailsModel> by lazy {
         MutableLiveData()
     }
-    fun getDetails(movieId : Long){
-        moviesRepository.getDetails( movieId = movieId, page = 1).subscribe({ moviedetailsModel ->
-            movievdetailsResult.value = moviedetailsModel },
+
+    fun getDetails(movieId: Long) {
+        moviesRepository.getDetails(movieId = movieId, page = 1).subscribe({ moviedetailsModel ->
+            movievdetailsResult.value = moviedetailsModel
+        },
             { errorThrowable -> movieDetailsMError.value = errorThrowable.localizedMessage })
 
 
@@ -130,14 +135,15 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val movieTrailerError: LiveData<MovieDetailsModel> by lazy {
         MutableLiveData()
     }
-    fun getTrailer(movieId : Long){
-        moviesRepository.getTrailer( movieId = movieId, page = 1).subscribe({ movietrailerModel ->
-            movievTrailerResult.value = movietrailerModel },
+
+    fun getTrailer(movieId: Long) {
+        moviesRepository.getTrailer(movieId = movieId, page = 1).subscribe({ movietrailerModel ->
+            movievTrailerResult.value = movietrailerModel
+        },
             { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
 
 
     }
-
 
 
     private val movievReviewsResult: MutableLiveData<MovieReviewsModel> by lazy {
@@ -152,10 +158,13 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val movieReviewsError: LiveData<MovieReviewsModel> by lazy {
         MutableLiveData()
     }
-    fun getReviews(movieId : Long){
-        moviesRepository.getTrailer( movieId = movieId, page = 1).subscribe({ movietrailerModel ->
-            movievTrailerResult.value = movietrailerModel },
-            { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
+
+    fun getReviews(movieId: Long) {
+        moviesRepository.getReviews(movieId = movieId, page = 1, apiKey = BuildConfig.API_KEY)
+            .subscribe({ movieReviewsModel ->
+                movievReviewsResult.value = movieReviewsModel
+            },
+                { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
 
 
     }
@@ -173,11 +182,34 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     val movieCastsError: LiveData<MovieReviewsModel> by lazy {
         MutableLiveData()
     }
-    fun getCasts(movieId : Long){
-        moviesRepository.getTrailer( movieId = movieId, page = 1).subscribe({ movietrailerModel ->
-            movievTrailerResult.value = movietrailerModel },
-            { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
 
+    fun getCasts(movieId: Long) {
+        moviesRepository.getCasts(movieId = movieId, page = 1, apiKey = BuildConfig.API_KEY)
+            .subscribe({ moviecastsModel ->
+                movievCastsResult.value = moviecastsModel
+            },
+                { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
+
+
+    }
+
+    private val tokenResult: MutableLiveData<RequestTokenModel> by lazy {
+        MutableLiveData()
+    }
+
+    val tokenLiveData: LiveData<RequestTokenModel> = tokenResult
+    private val tokenMError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val tokenError: LiveData<MovieReviewsModel> by lazy {
+        MutableLiveData()
+    }
+
+    fun getToken() {
+        moviesRepository.getToken(apiKey = BuildConfig.API_KEY).subscribe({ requestTokenModel ->
+            tokenResult.value = requestTokenModel
+        },
+            { errorThrowable -> tokenMError.value = errorThrowable.localizedMessage })
 
     }
 

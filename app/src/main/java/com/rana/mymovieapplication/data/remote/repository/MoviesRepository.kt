@@ -19,6 +19,7 @@ class MoviesRepository(
     private val trailerService: MovieTrailerService,
     private val reviewsService: MovieReviewsService,
     private val castsService: MovieCastsService,
+    private val requestTokenService: RequestTokenService,
     private val ioScheduler: Scheduler,
     private val mainScheduler: Scheduler,
     private val sharedPreferences: SharedPreferences
@@ -92,13 +93,18 @@ class MoviesRepository(
         .observeOn(mainScheduler)
 
 
-    fun getCasts( movieId: Long,
-                  apiKey: String,
-                  page: Int
+    fun getCasts(
+        movieId: Long,
+        apiKey: String,
+        page: Int
 
-    ):Single<MovieCastsModel> =  castsService.getCast(movieId, apiKey, page = page)
+    ): Single<MovieCastsModel> = castsService.getCast(movieId, apiKey, page = page)
         .subscribeOn(ioScheduler)
         .observeOn(mainScheduler)
+
+
+    fun getToken(apiKey: String): Single<RequestTokenModel> = requestTokenService.getToken(apiKey)
+        .subscribeOn(ioScheduler).observeOn(mainScheduler)
 }
 
 

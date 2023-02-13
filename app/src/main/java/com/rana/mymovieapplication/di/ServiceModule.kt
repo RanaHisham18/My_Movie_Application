@@ -42,4 +42,8 @@ val serviceModule = module {
         get<Retrofit>().create(MovieCastsService :: class.java)
     }
 
+    factory {
+        get<Retrofit>().create(RequestTokenService :: class.java)
+    }
+
 }
