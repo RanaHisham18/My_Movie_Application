@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
-import androidx.navigation.fragment.NavHostFragment
+
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,10 +14,7 @@ import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.MovieCastsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieDetailsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
-import com.rana.mymovieapplication.presentation.homescreen.HomeFragmentDirections
 import com.rana.mymovieapplication.presentation.homescreen.HomeViewModel
-import com.rana.mymovieapplication.presentation.homescreen.PopularFilmsAdapter
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -73,7 +68,7 @@ class MovieDetailFragment : Fragment() {
         viewModel.MovieReviewsLiveData.observe(viewLifecycleOwner){
             when (it is MovieReviewsModel) {
                 true -> {
-                    //to checkkk
+                    //to check
                     movieDetail_Userphoto_Iv.load("https://image.tmdb.org/t/p/original/${it.results[0].author_details.avatar_path}")
                     movieDetail_username_Tv.text = it.results[0].author
                     movieDetail_reviews_text_Tv.text =it.results[0].content
@@ -88,23 +83,23 @@ class MovieDetailFragment : Fragment() {
         movieDetail_seeall_Tv.setOnClickListener (View.OnClickListener {
             findNavController().navigate(R.id.action_movieDetailFragment_to_reviewsFragment)
     })
-        viewModel.getCasts(args.movieId)
-        viewModel.MovieCastsLiveData.observe(viewLifecycleOwner){
-            when(it is MovieCastsModel){
-                true -> {
-                  movieDetail_casts_username_Tv.text = it.cast[0].name
-                  movieDetail_casts_username2_Tv.text = it.cast[1].name
-                    movieDetail_casts_userphoto_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[0].profile_path}")
-                    movieDetail_casts_userphoto2_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[1].profile_path}")
-                    movieDetail_casts_category_Tv.text = it.cast[0].known_for_department
-                    movieDetail_casts_category2_Tv.text = it.cast[1].known_for_department
-                }
-                else -> {
-
-                }
-            }
-
-        }
+//        viewModel.getCasts(args.movieId)
+//        viewModel.MovieCastsLiveData.observe(viewLifecycleOwner){
+//            when(it is MovieCastsModel){
+//                true -> {
+//                  movieDetail_casts_username_Tv.text = it.cast[0].name
+//                  movieDetail_casts_username2_Tv.text = it.cast[1].name
+//                    movieDetail_casts_userphoto_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[0].profile_path}")
+//                    movieDetail_casts_userphoto2_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[1].profile_path}")
+//                    movieDetail_casts_category_Tv.text = it.cast[0].known_for_department
+//                    movieDetail_casts_category2_Tv.text = it.cast[1].known_for_department
+//                }
+//                else -> {
+//
+//                }
+//            }
+//
+//        }
 
 
 

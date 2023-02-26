@@ -93,14 +93,13 @@ class MoviesRepository(
         .observeOn(mainScheduler)
 
 
-    fun getCasts(
-        movieId: Long,
-        apiKey: String,
-        page: Int
-
-    ): Single<MovieCastsModel> = castsService.getCast(movieId, apiKey, page = page)
-        .subscribeOn(ioScheduler)
-        .observeOn(mainScheduler)
+//    fun getCasts(
+//        movieId: Long,
+//        apiKey: String,
+//        page: Int
+//    ): Single<MovieCastsModel> = castsService.getCast(movieId, apiKey, page = page)
+//        .subscribeOn(ioScheduler)
+//        .observeOn(mainScheduler)
 
 
     fun getToken(apiKey: String): Single<RequestTokenModel> = requestTokenService.getToken(apiKey)

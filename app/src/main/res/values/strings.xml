@@ -10,4 +10,5 @@
     <string name="trailer">Trailer</string>
     <string name="reviews">Reviews</string>
     <string name="casts">Casts</string>
+    <string name="user_authentication_in_progress">User Authentication In Progress</string>
 </resources>
