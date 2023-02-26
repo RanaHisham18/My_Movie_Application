@@ -1,6 +1,7 @@
 package com.rana.mymovieapplication.presentation.moviedetails
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -64,11 +65,12 @@ class MovieDetailFragment : Fragment() {
         )
 
 
-        viewModel.getReviews(args.movieId)
-        viewModel.MovieReviewsLiveData.observe(viewLifecycleOwner){
-            when (it is MovieReviewsModel) {
+        viewModel.getMovieReviews(args.movieId)
+        viewModel.movieReviewsLiveData.observe(viewLifecycleOwner){
+            when (it.results.isNotEmpty()) {
                 true -> {
                     //to check
+                    Log.d("Success", "Data Success $it")
                     movieDetail_Userphoto_Iv.load("https://image.tmdb.org/t/p/original/${it.results[0].author_details.avatar_path}")
                     movieDetail_username_Tv.text = it.results[0].author
                     movieDetail_reviews_text_Tv.text =it.results[0].content
@@ -80,26 +82,30 @@ class MovieDetailFragment : Fragment() {
             }
         }
 
+        viewModel.movieReviewsLiveDataError.observe(viewLifecycleOwner){
+            Log.d("ay 7aga", "Error $it")
+        }
+
         movieDetail_seeall_Tv.setOnClickListener (View.OnClickListener {
             findNavController().navigate(R.id.action_movieDetailFragment_to_reviewsFragment)
     })
-//        viewModel.getCasts(args.movieId)
-//        viewModel.MovieCastsLiveData.observe(viewLifecycleOwner){
-//            when(it is MovieCastsModel){
-//                true -> {
-//                  movieDetail_casts_username_Tv.text = it.cast[0].name
-//                  movieDetail_casts_username2_Tv.text = it.cast[1].name
-//                    movieDetail_casts_userphoto_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[0].profile_path}")
-//                    movieDetail_casts_userphoto2_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[1].profile_path}")
-//                    movieDetail_casts_category_Tv.text = it.cast[0].known_for_department
-//                    movieDetail_casts_category2_Tv.text = it.cast[1].known_for_department
-//                }
-//                else -> {
-//
-//                }
-//            }
-//
-//        }
+        viewModel.getMovieCast(args.movieId)
+        viewModel.movieCastLiveData.observe(viewLifecycleOwner){
+            when(it is MovieCastsModel){
+                true -> {
+                  movieDetail_casts_username_Tv.text = it.cast[0].name
+                  movieDetail_casts_username2_Tv.text = it.cast[1].name
+                    movieDetail_casts_userphoto_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[0].profile_path}")
+                    movieDetail_casts_userphoto2_Tv.load("https://image.tmdb.org/t/p/original/${it.cast[1].profile_path}")
+                    movieDetail_casts_category_Tv.text = it.cast[0].known_for_department
+                    movieDetail_casts_category2_Tv.text = it.cast[1].known_for_department
+                }
+                else -> {
+
+                }
+            }
+
+        }
 
 
 

@@ -34,8 +34,8 @@ class ReviewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         args.movieId
-        viewModel.getReviews(args.movieId)
-        viewModel.MovieReviewsLiveData.observe(viewLifecycleOwner){
+        viewModel.getMovieReviews(args.movieId)
+        viewModel.movieReviewsLiveData.observe(viewLifecycleOwner){
             when (it is MovieReviewsModel){
 
                true-> {

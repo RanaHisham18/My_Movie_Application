@@ -9,8 +9,7 @@ data class MovieReviewsModel(
     val results: List<Result>,
     val total_pages: Int,
     val total_results: Int
-)
-{
+) {
     @JsonClass(generateAdapter = true)
     data class Result(
         val author: String,
@@ -21,7 +20,6 @@ data class MovieReviewsModel(
         val updated_at: String,
         val url: String
     )
-
     @JsonClass(generateAdapter = true)
     data class AuthorDetails(
         val avatar_path: String?,

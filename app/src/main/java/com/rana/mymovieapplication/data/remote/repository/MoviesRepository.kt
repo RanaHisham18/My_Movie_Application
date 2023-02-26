@@ -85,21 +85,19 @@ class MoviesRepository(
 
 
     fun getReviews(
+        apiKey: String = BuildConfig.API_KEY,
         movieId: Long,
-        apiKey: String,
         page: Int
-    ): Single<MovieReviewsModel> = reviewsService.getReviews(movieId, apiKey, page = page)
-        .subscribeOn(ioScheduler)
-        .observeOn(mainScheduler)
+    ): Single<MovieReviewsModel> = reviewsService.getMovieReviews(movie_id = movieId, apiKey = apiKey, page = page)
+        .subscribeOn(ioScheduler).observeOn(mainScheduler)
 
 
-//    fun getCasts(
-//        movieId: Long,
-//        apiKey: String,
-//        page: Int
-//    ): Single<MovieCastsModel> = castsService.getCast(movieId, apiKey, page = page)
-//        .subscribeOn(ioScheduler)
-//        .observeOn(mainScheduler)
+    fun getCast(
+        apiKey: String = BuildConfig.API_KEY,
+        movieId: Long,
+    ): Single<MovieCastsModel> = castsService.getMovieCast(movie_id = movieId, apiKey = apiKey)
+
+
 
 
     fun getToken(apiKey: String): Single<RequestTokenModel> = requestTokenService.getToken(apiKey)

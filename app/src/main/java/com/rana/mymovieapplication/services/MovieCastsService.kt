@@ -8,15 +8,13 @@ import retrofit2.http.Query
 
 interface MovieCastsService {
 
-    @GET("/movie/{movie_id}/credits")
-    fun getCast(
+    @GET("movie/{movie_id}/credits")
+    fun getMovieCast(
         @Path("movie_id")
         movie_id: Long,
         @Query("api_key")
-        apikey: String,
+        apiKey: String,
         @Query("language")
-        language: String = "en-US",
-        @Query("page")
-        page : Int
+        language: String = "en-US"
     ): Single<MovieCastsModel>
 }

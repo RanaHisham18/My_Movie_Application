@@ -146,26 +146,22 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     }
 
 
-    private val movievReviewsResult: MutableLiveData<MovieReviewsModel> by lazy {
+    private val movieReviewsResult: MutableLiveData<MovieReviewsModel> by lazy {
         MutableLiveData()
     }
 
-    val MovieReviewsLiveData: LiveData<MovieReviewsModel> = movievReviewsResult
+    val movieReviewsLiveData: LiveData<MovieReviewsModel> = movieReviewsResult
 
-    private val movieReviewsMError: MutableLiveData<String> by lazy {
+    private val movieReviewsError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val movieReviewsError: LiveData<MovieReviewsModel> by lazy {
-        MutableLiveData()
-    }
+    val movieReviewsLiveDataError = movieReviewsError
 
-    fun getReviews(movieId: Long) {
-        moviesRepository.getReviews(movieId = movieId, page = 1, apiKey = BuildConfig.API_KEY)
-            .subscribe({ movieReviewsModel ->
-                movievReviewsResult.value = movieReviewsModel
-            },
-                { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
-
+    fun getMovieReviews(movieId: Long) {
+        moviesRepository.getReviews(movieId = movieId, page = 1).subscribe({ movieReviewsModel ->
+            movieReviewsResult.value = movieReviewsModel
+        },
+            { errorThrowable -> movieReviewsError.value = errorThrowable.localizedMessage })
 
     }
 
@@ -192,6 +188,25 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
 //
 //
 //    }
+
+    private val movieCastResult: MutableLiveData<MovieCastsModel> by lazy {
+        MutableLiveData()
+    }
+
+    val movieCastLiveData: LiveData<MovieCastsModel> = movieCastResult
+
+    private val movieCastError: MutableLiveData<String> by lazy {
+        MutableLiveData()
+    }
+    val movieCastLiveDataError = movieCastError
+
+    fun getMovieCast(movieId: Long) {
+        moviesRepository.getCast(movieId = movieId).subscribe({ movieCastModel ->
+            movieCastResult.value = movieCastModel
+        },
+            { errorThrowable -> movieCastError.value = errorThrowable.localizedMessage })
+
+    }
 
     private val tokenResult: MutableLiveData<RequestTokenModel> by lazy {
         MutableLiveData()

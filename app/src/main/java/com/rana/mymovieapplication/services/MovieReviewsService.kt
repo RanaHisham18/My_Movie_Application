@@ -7,14 +7,12 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MovieReviewsService {
-
-
-    @GET("movie/{movie_id}")
-    fun getReviews(
+    @GET("movie/{movie_id}/reviews")
+    fun getMovieReviews(
         @Path("movie_id")
         movie_id: Long,
         @Query("api_key")
-        apikey: String,
+        apiKey: String,
         @Query("language")
         language: String = "en-US",
         @Query("page")
