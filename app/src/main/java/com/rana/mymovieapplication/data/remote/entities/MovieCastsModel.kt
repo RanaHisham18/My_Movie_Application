@@ -4,8 +4,8 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class MovieCastsModel(
-    val cast: List<Cast>,
     val crew: List<Crew>,
+    val cast: List<Cast>,
     val id: Int
 ) {
 

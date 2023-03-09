@@ -185,8 +185,8 @@
             app:layout_constraintStart_toEndOf="@id/movieDetail_reviews_Tv"/>
        <ImageView
            android:id="@+id/movieDetail_Userphoto_Iv"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="20dp"
+           android:layout_height="20dp"
            android:layout_marginStart="12dp"
            app:layout_constraintStart_toStartOf="parent"
            android:src="@drawable/ic_baseline_supervised_user_circle_24"
@@ -232,6 +232,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
            android:text="@string/casts"
+            android:visibility="gone"
             android:textColor="@color/white"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -243,6 +244,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             android:src="@drawable/ic_baseline_supervised_user_circle_24"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_Tv"/>
@@ -253,6 +255,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="bla bla bla "
+            android:visibility="gone"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginStart="12dp"
@@ -263,8 +266,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:textColor="@color/white"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username_Tv"
             app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username_Tv"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username_Tv"
@@ -277,6 +280,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="48dp"
+            android:visibility="gone"
             android:src="@drawable/ic_baseline_supervised_user_circle_24"
             app:layout_constraintStart_toEndOf="@id/movieDetail_casts_username_Tv"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_Tv" />
@@ -287,6 +291,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="bla bla bla "
+            android:visibility="gone"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -298,6 +303,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username_Tv"
             app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username_Tv"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username_Tv"
@@ -309,6 +315,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username2_Tv"
             app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username2_Tv"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username2_Tv"

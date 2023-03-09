@@ -14,8 +14,7 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     android:layout_margin="8dp"
-    app:srcCompat= "@drawable/baseline_video_library_24"
-    />
+    app:srcCompat= "@drawable/baseline_video_library_24"/>
 
 
 
