@@ -5,18 +5,27 @@
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-
-<ImageView
-    android:id="@+id/trailer_Iv"
-    android:layout_width="190dp"
-    android:layout_height="140dp"
+    <androidx.cardview.widget.CardView
+    android:id="@+id/cvTrailer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    android:layout_margin="8dp"
-    app:srcCompat= "@drawable/baseline_video_library_24"/>
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/grey"
+    app:cardCornerRadius="7dp">
 
 
+        <ImageView
+            android:id="@+id/trailer_Iv"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_video_library_24" />
 
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

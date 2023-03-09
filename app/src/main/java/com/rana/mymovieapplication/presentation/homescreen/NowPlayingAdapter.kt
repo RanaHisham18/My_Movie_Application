@@ -39,10 +39,9 @@ class NowPlayingAdapter(val movieItemCallBack: (movieId: Long) -> Unit) :
 
             val preferences: SharedPreferences = itemView.context
                 .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+//            val desData =  preferences.getString("My Movie Application", String().desrialize())
             itemView.filmcategoryTV.text = preferences.toString()
 
-//            val desData =
-//                sharedPreferences.getString("My Movie Application", String().desrialize())
 
 
             itemView.sliderCardView.setOnClickListener() {

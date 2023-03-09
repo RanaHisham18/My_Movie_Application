@@ -49,6 +49,7 @@
             android:src="@drawable/icons8_book_mark_6"
             app:layout_constraintBottom_toBottomOf="@id/movieDetail_filmname_Tv"
             app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@id/movieDetail_filmname_Tv"
             app:layout_constraintTop_toBottomOf="@id/film_poster_Iv" />
 
