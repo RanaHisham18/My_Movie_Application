@@ -1,20 +1,24 @@
 package com.rana.mymovieapplication.presentation.homescreen
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore.Audio.Genres
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel.Genre
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -32,6 +36,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -39,6 +44,10 @@ class HomeFragment : Fragment() {
         return inflater.inflate(
             R.layout.fragment_home, container, false
         )
+
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,23 +129,34 @@ class HomeFragment : Fragment() {
             }
 
         }
-
+//        <List<Genre>>
         viewModel.getCategory()
         viewModel.MovieCategoryLiveData.observe(viewLifecycleOwner) {
             when (it is MovieCategoryModel) {
                 true -> {
-                    val sharedPreferences: SharedPreferences = requireActivity()
-                        .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+//                    val sharedPreferences: SharedPreferences = requireActivity()
+//                        .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
 
-                    Log.d(
-                        HomeFragment::class.java.simpleName,
-                        "First Category  " + it.genres[0].id.toString() + " " + it.genres[0].name
-                    )
 
-                    Log.d(
-                        HomeFragment::class.java.simpleName,
-                        "Shared Preferences" + sharedPreferences.all
-                    )
+//                    val editor = sharedPreferences.edit()
+//                    editor.putString("My Movie Application", serializedList)
+//                    editor.apply()
+//                     serializedList = sharedPreferences.getString("My Movie Application", "")
+
+                    var gson = Gson()
+                    var movieCategoryList = listOf(MovieCategoryModel(genres = List<MovieCategoryModel.Genre(id, name = String())>))
+                    var movieCategoryListJson = gson.toJson(movieCategoryList)
+                    var sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                    val editor = sharedPrefs?.edit()
+                    editor?.putString("movie_categories", movieCategoryListJson)
+                    editor?.apply()
+
+                    sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                     movieCategoryListJson = sharedPrefs?.getString("movie_categories", null)
+                    val type = object : TypeToken<List<MovieCategoryModel>>() {}.type
+                     movieCategoryList = gson.fromJson<List<MovieCategoryModel>>(movieCategoryListJson, type)
+
+
                 }
                 else -> {
 

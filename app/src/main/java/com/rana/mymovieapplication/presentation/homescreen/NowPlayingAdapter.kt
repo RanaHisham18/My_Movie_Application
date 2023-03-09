@@ -11,7 +11,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.rana.mymovieapplication.R
+import com.rana.mymovieapplication.data.remote.entities.Genre
+import com.rana.mymovieapplication.data.remote.entities.MovieCategoryModel
 import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
 import com.rana.mymovieapplication.presentation.MainActivity
 import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragment
@@ -22,6 +26,7 @@ class NowPlayingAdapter(val movieItemCallBack: (movieId: Long) -> Unit) :
     RecyclerView.Adapter<NowPlayingAdapter.MyViewHolder>() {
 
     private var movies = emptyList<NowPlayingModel.Result>()
+
 
 
     class MyViewHolder(
@@ -37,10 +42,18 @@ class NowPlayingAdapter(val movieItemCallBack: (movieId: Long) -> Unit) :
             itemView.card_background.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
             itemView.imageslider.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
 
-            val preferences: SharedPreferences = itemView.context
-                .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
-//            val desData =  preferences.getString("My Movie Application", String().desrialize())
-            itemView.filmcategoryTV.text = preferences.toString()
+
+
+
+
+//des trial
+//
+//            val gson = Gson()
+//            val type = object : TypeToken<List<Genre>>() {}.type
+//            var myList = gson.fromJson<List<Genre>>(serializedList, type)
+
+            // val desData =  preferences.getString("My Movie Application", String().desrialize())
+            //itemView.filmcategoryTV.text = preferences.toString()
 
 
 
