@@ -158,6 +158,7 @@
             android:id="@+id/trailers_Rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_trailer_Tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

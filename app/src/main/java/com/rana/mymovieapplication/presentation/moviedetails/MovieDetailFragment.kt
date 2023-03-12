@@ -94,13 +94,14 @@ class MovieDetailFragment : Fragment() {
         viewModel.getTrailer(args.movieId)
         viewModel.MovieTrailerLiveData.observe(viewLifecycleOwner){
             if(it is MovieTrailerModel){
-                Log.d("Trailers", it.results.toString())
+                Log.d("trailercheck", it.results.toString())
                 movieTrailerAdapter.setData(it.results)
                 trailers_Rv.adapter = movieTrailerAdapter
             }
         }
       trailers_Rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         viewModel.getMovieReviews(args.movieId)
+
 
         viewModel.movieReviewsLiveData.observe(viewLifecycleOwner) {
             when (it.results.isNotEmpty()) {
