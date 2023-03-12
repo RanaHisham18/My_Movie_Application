@@ -104,6 +104,7 @@
            android:textSize="18sp"
            android:padding="18dp"
            android:layout_marginStart="28dp"
+           android:layout_marginBottom="28dp"
            app:layout_constraintEnd_toEndOf="@id/popular_seeAll_TextView"
            app:layout_constraintStart_toStartOf="@id/popular_seeAll_TextView"
            app:layout_constraintTop_toBottomOf="@id/popular_recyclerview"/>

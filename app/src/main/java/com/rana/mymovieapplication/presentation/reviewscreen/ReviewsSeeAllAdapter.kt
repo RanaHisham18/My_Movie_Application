@@ -27,7 +27,7 @@ class ReviewsSeeAllAdapter : RecyclerView.Adapter<ReviewsSeeAllAdapter.MyViewHol
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.popularseeall_rv_item,
+            R.layout.reviews_rv_item,
             parent, false
         )
         return ReviewsSeeAllAdapter.MyViewHolder(view)
@@ -40,5 +40,10 @@ class ReviewsSeeAllAdapter : RecyclerView.Adapter<ReviewsSeeAllAdapter.MyViewHol
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(movies.get(position))
 
+    }
+
+
+    fun setData(movies: MovieReviewsModel) {
+        this.movies = movies.results
     }
 }

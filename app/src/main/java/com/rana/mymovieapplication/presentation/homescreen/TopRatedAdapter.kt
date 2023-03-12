@@ -22,6 +22,10 @@ class TopRatedAdapter(val movieItemCallBack: (movieId: Long) -> Unit)
             itemView.toprated_ratingnumber_count_TV.text = movie.vote_count.toString()
             itemView.toprated_ratingnumber_average_TV.text = movie.vote_average.toString()
             itemView.toprated_IV.load("https://image.tmdb.org/t/p/original/${movie.poster_path}")
+
+            itemView.toprated_card.setOnClickListener() {
+                movieItemCallBack(movie.id.toLong())
+            }
         }
     }
 

@@ -32,6 +32,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModel()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -39,6 +40,10 @@ class HomeFragment : Fragment() {
         return inflater.inflate(
             R.layout.fragment_home, container, false
         )
+
+
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -120,23 +125,34 @@ class HomeFragment : Fragment() {
             }
 
         }
-
+//        <List<Genre>>
         viewModel.getCategory()
         viewModel.MovieCategoryLiveData.observe(viewLifecycleOwner) {
             when (it is MovieCategoryModel) {
                 true -> {
-                    val sharedPreferences: SharedPreferences = requireActivity()
-                        .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+//                    val sharedPreferences: SharedPreferences = requireActivity()
+//                        .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
+//
+//
+//                    val editor = sharedPreferences.edit()
+//                    editor.putString("My Movie Application", serializedList)
+//                    editor.apply()
+//                     serializedList = sharedPreferences.getString("My Movie Application", "")
+//
+//                    var gson = Gson()
+//                    var movieCategoryList = listOf(MovieCategoryModel(genres = List<MovieCategoryModel.Genre(id, name = String())>))
+//                    var movieCategoryListJson = gson.toJson(movieCategoryList)
+//                    var sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+//                    val editor = sharedPrefs?.edit()
+//                    editor?.putString("movie_categories", movieCategoryListJson)
+//                    editor?.apply()
+//
+//                    sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+//                     movieCategoryListJson = sharedPrefs?.getString("movie_categories", null)
+//                    val type = object : TypeToken<List<MovieCategoryModel>>() {}.type
+//                     movieCategoryList = gson.fromJson<List<MovieCategoryModel>>(movieCategoryListJson, type)
+//
 
-                    Log.d(
-                        HomeFragment::class.java.simpleName,
-                        "First Category  " + it.genres[0].id.toString() + " " + it.genres[0].name
-                    )
-
-                    Log.d(
-                        HomeFragment::class.java.simpleName,
-                        "Shared Preferences" + sharedPreferences.all
-                    )
                 }
                 else -> {
 

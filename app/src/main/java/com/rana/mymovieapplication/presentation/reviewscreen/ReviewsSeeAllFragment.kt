@@ -7,10 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rana.mymovieapplication.R
+import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
+import com.rana.mymovieapplication.presentation.homescreen.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_reviews.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReviewsSeeAllFragment : Fragment() {
     private lateinit var reviewsSeeAllAdapter: ReviewsSeeAllAdapter
+    private val viewModel: HomeViewModel by viewModel()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +32,20 @@ class ReviewsSeeAllFragment : Fragment() {
         reviews_rv.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         reviews_rv.adapter = reviewsSeeAllAdapter
+
+        viewModel.getMovieReviews(args.movieId)
+        viewModel.movieReviewsLiveData.observe(viewLifecycleOwner) {
+            when (it is MovieReviewsModel) {
+                true -> {
+                    reviewsSeeAllAdapter.setData(it)
+                  reviews_rv.adapter = reviewsSeeAllAdapter
+
+
+                }
+                else -> {
+
+                }
+            }
     }
 
-}
+}}
