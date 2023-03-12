@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.navigation.fragment.NavHostFragment
 
 
 import androidx.navigation.fragment.findNavController
@@ -99,6 +101,7 @@ class MovieDetailFragment : Fragment() {
         }
       trailers_Rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         viewModel.getMovieReviews(args.movieId)
+
         viewModel.movieReviewsLiveData.observe(viewLifecycleOwner) {
             when (it.results.isNotEmpty()) {
                 true -> {
@@ -108,9 +111,14 @@ class MovieDetailFragment : Fragment() {
                     movieDetail_username_Tv.text = it.results[0].author
                     movieDetail_reviews_text_Tv.text = it.results[0].content
                     movieDetail_review_dateTV.text = it.results[0].created_at
+                    noreview_tv.visibility = View.GONE
                 }
                 else -> {
-
+                    movieDetail_Userphoto_Iv.visibility = View.GONE
+                    movieDetail_username_Tv.visibility = View.GONE
+                    movieDetail_reviews_text_Tv.visibility= View.GONE
+                    movieDetail_review_dateTV.visibility= View.GONE
+                    noreview_tv.visibility = View.VISIBLE
                 }
             }
         }
@@ -143,7 +151,12 @@ class MovieDetailFragment : Fragment() {
             Log.d("Failure", "Error $it")
         }
 
-
+      // movieDetail_seeall_Tv.setOnClickListener(View.OnClickListener {
+//            val navHostFragment =
+//                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+//            val navController = navHostFragment.navController
+//            navController.navigate(R.id.reviewsFragment)
+//        })
     }
 
     fun playVideos(key: String) {
@@ -151,6 +164,8 @@ class MovieDetailFragment : Fragment() {
         urlIntent.data = Uri.parse("https://www.youtube.com/watch?v=${key}")
         requireActivity().startActivity(urlIntent)
     }
+
+
 }
 
 

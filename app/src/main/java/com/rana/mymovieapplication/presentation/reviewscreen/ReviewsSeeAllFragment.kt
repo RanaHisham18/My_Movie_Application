@@ -5,16 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
 import com.rana.mymovieapplication.presentation.homescreen.HomeViewModel
+import com.rana.mymovieapplication.presentation.moviedetails.MovieDetailFragmentArgs
+import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import kotlinx.android.synthetic.main.fragment_reviews.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReviewsSeeAllFragment : Fragment() {
     private lateinit var reviewsSeeAllAdapter: ReviewsSeeAllAdapter
     private val viewModel: HomeViewModel by viewModel()
+    private val args by navArgs<MovieDetailFragmentArgs>()
+
 
 
     override fun onCreateView(
@@ -47,5 +53,6 @@ class ReviewsSeeAllFragment : Fragment() {
                 }
             }
     }
+
 
 }}

@@ -322,6 +322,19 @@
             app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username2_Tv"
             app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username2_Tv"
             android:text="bla bla category"/>
+
+        <TextView
+            android:id="@+id/noreview_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/movieDetail_reviews_Tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:text="No Review Found"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
