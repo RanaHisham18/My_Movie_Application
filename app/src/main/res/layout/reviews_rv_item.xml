@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/black">
+    android:background="@drawable/rounded">
 
 
     <ImageView
         android:id="@+id/reviews_Userphoto_Iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
         android:layout_margin="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/reviews_username_Tv"
@@ -34,7 +35,7 @@
         android:layout_marginStart="12dp"
         android:text="18/2/2001"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="@id/reviews_Userphoto_Iv"
+        app:layout_constraintStart_toStartOf="@id/reviews_username_Tv"
         app:layout_constraintEnd_toEndOf="@id/reviews_username_Tv"
         app:layout_constraintTop_toBottomOf="@id/reviews_username_Tv" />
 
@@ -50,4 +51,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/reviews_review_dateTV"/>
+
+    <TextView
+        android:id="@+id/norev_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Review Found"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

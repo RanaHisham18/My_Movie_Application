@@ -61,7 +61,14 @@
         android:id="@+id/reviewsFragment"
         android:name="com.rana.mymovieapplication.presentation.reviewscreen.ReviewsFragment"
         android:label="fragment_reviews"
-        tools:layout="@layout/fragment_reviews" />
+        tools:layout="@layout/fragment_reviews" >
+        <argument
+            android:name="movieId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_reviewsFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/topRatedSeeAllFragment"
         android:name="com.rana.mymovieapplication.presentation.homescreen.TopRatedSeeAllFragment"

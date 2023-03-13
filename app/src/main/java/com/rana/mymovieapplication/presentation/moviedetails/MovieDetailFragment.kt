@@ -22,6 +22,7 @@ import com.rana.mymovieapplication.data.remote.entities.MovieDetailsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
 import com.rana.mymovieapplication.data.remote.entities.MovieTrailerModel
 import com.rana.mymovieapplication.presentation.homescreen.HomeViewModel
+import com.rana.mymovieapplication.presentation.reviewscreen.ReviewsFragmentDirections
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_movie_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -65,27 +66,6 @@ class MovieDetailFragment : Fragment() {
             }
         }
 
-//        movieTrailerAdapter = MovieTrailerAdapter(movieItemCallBack = {
-//            val urlIntent = Intent(Intent.ACTION_VIEW)
-//            urlIntent.data = Uri.parse("https://www.youtube.com/watch?v=${it}")
-//            requireActivity().startActivity(urlIntent)
-//        })
-//
-//        viewModel.getTrailer(args.movieId)
-//        viewModel.MovieTrailerLiveData.observe(viewLifecycleOwner) {
-//            if (it is MovieTrailerModel) {
-//                Log.d("Trailer", it.results.toString())
-//                movieTrailerAdapter.setData(it.results)
-//                trailers_Rv.adapter = movieTrailerAdapter
-//            }
-//        }
-//        trailers_Rv.layoutManager = LinearLayoutManager(
-//            activity, LinearLayoutManager.HORIZONTAL, false
-//        )
-//        viewModel.movieTrailerError.observe(viewLifecycleOwner){
-//            Log.d("casterror", "$it")
-//        }
-
        movieTrailerAdapter = MovieTrailerAdapter(movieItemCallBack = {
             val urlIntent = Intent(Intent.ACTION_VIEW)
             urlIntent.data = Uri.parse("https://www.youtube.com/watch?v=${it}")
@@ -101,8 +81,7 @@ class MovieDetailFragment : Fragment() {
         }
       trailers_Rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
         viewModel.getMovieReviews(args.movieId)
-
-
+        
         viewModel.movieReviewsLiveData.observe(viewLifecycleOwner) {
             when (it.results.isNotEmpty()) {
                 true -> {
@@ -120,12 +99,12 @@ class MovieDetailFragment : Fragment() {
                     movieDetail_reviews_text_Tv.visibility= View.GONE
                     movieDetail_review_dateTV.visibility= View.GONE
                     noreview_tv.visibility = View.VISIBLE
+                    movieDetail_seeall_Tv.visibility = View.GONE
                 }
             }
         }
 
         viewModel.movieReviewsLiveDataError.observe(viewLifecycleOwner) {
-            Log.d("ay 7aga", "Error $it")
         }
 
         movieDetail_seeall_Tv.setOnClickListener(View.OnClickListener {
@@ -152,12 +131,15 @@ class MovieDetailFragment : Fragment() {
             Log.d("Failure", "Error $it")
         }
 
-      // movieDetail_seeall_Tv.setOnClickListener(View.OnClickListener {
-//            val navHostFragment =
-//                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-//            val navController = navHostFragment.navController
-//            navController.navigate(R.id.reviewsFragment)
-//        })
+       movieDetail_seeall_Tv.setOnClickListener(){
+           findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToReviewsFragment(args.movieId))
+       }
+
+        //backarrow_icon_Iv.setOnClickListener() { findNavController().navigate(ReviewsFragmentDirections
+         //   .actionReviewsFragmentToMovieDetailFragment(args.movieId) ) }
+        backarrow_icon_Iv.setOnClickListener(){
+            findNavController().navigate(R.id.homeFragment)
+        }
     }
 
     fun playVideos(key: String) {
@@ -165,7 +147,6 @@ class MovieDetailFragment : Fragment() {
         urlIntent.data = Uri.parse("https://www.youtube.com/watch?v=${key}")
         requireActivity().startActivity(urlIntent)
     }
-
 
 }
 

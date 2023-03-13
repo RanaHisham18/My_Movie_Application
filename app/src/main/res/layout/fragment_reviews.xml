@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/movieReviews_white_back_arrow_TV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:src="@drawable/white_arrow"

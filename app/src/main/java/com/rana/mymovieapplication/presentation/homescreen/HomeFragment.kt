@@ -42,8 +42,6 @@ class HomeFragment : Fragment() {
         )
 
 
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,8 +76,10 @@ class HomeFragment : Fragment() {
 
         //third Rv
         topRatedAdapter = TopRatedAdapter(movieItemCallBack = {
-            findNavController().navigate(HomeFragmentDirections
-                .actionHomeFragmentToMovieDetailFragment(it))
+            findNavController().navigate(
+                HomeFragmentDirections
+                    .actionHomeFragmentToMovieDetailFragment(it)
+            )
 
         })
         toprated_recyclerview.layoutManager = LinearLayoutManager(
@@ -130,28 +130,6 @@ class HomeFragment : Fragment() {
         viewModel.MovieCategoryLiveData.observe(viewLifecycleOwner) {
             when (it is MovieCategoryModel) {
                 true -> {
-//                    val sharedPreferences: SharedPreferences = requireActivity()
-//                        .getSharedPreferences("My Movie Application", Context.MODE_PRIVATE)
-//
-//
-//                    val editor = sharedPreferences.edit()
-//                    editor.putString("My Movie Application", serializedList)
-//                    editor.apply()
-//                     serializedList = sharedPreferences.getString("My Movie Application", "")
-//
-//                    var gson = Gson()
-//                    var movieCategoryList = listOf(MovieCategoryModel(genres = List<MovieCategoryModel.Genre(id, name = String())>))
-//                    var movieCategoryListJson = gson.toJson(movieCategoryList)
-//                    var sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//                    val editor = sharedPrefs?.edit()
-//                    editor?.putString("movie_categories", movieCategoryListJson)
-//                    editor?.apply()
-//
-//                    sharedPrefs = context?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-//                     movieCategoryListJson = sharedPrefs?.getString("movie_categories", null)
-//                    val type = object : TypeToken<List<MovieCategoryModel>>() {}.type
-//                     movieCategoryList = gson.fromJson<List<MovieCategoryModel>>(movieCategoryListJson, type)
-//
 
                 }
                 else -> {

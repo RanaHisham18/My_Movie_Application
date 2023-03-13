@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_toprated_see_all.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TopRatedSeeAllFragment : Fragment() {
-    private lateinit var TopRatedSeeAllAdapter: TopRatedAdapter
+    private lateinit var TopRatedSeeAllAdapter: TopRatedSeeAllAdapter
     private val viewModel: HomeViewModel by viewModel()
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class TopRatedSeeAllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       TopRatedSeeAllAdapter = TopRatedSeeAllAdapter
+       TopRatedSeeAllAdapter = TopRatedSeeAllAdapter()
        toprated_seeall_rv.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,
            false)
         toprated_seeall_rv.adapter = TopRatedSeeAllAdapter

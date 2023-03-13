@@ -9,7 +9,7 @@ import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.MovieReviewsModel
 import kotlinx.android.synthetic.main.reviews_rv_item.view.*
 
-class ReviewsSeeAllAdapter : RecyclerView.Adapter<ReviewsSeeAllAdapter.MyViewHolder>() {
+class ReviewsSeeAllAdapter: RecyclerView.Adapter<ReviewsSeeAllAdapter.MyViewHolder>() {
 
     private var movies = emptyList<MovieReviewsModel.Result>()
 
