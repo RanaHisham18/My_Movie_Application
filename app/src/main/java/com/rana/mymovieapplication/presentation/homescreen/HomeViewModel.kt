@@ -5,18 +5,24 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rana.mymovieapplication.BuildConfig
 import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.data.remote.filtiration.MovieFilter
 import com.rana.mymovieapplication.data.remote.repository.MoviesRepository
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
 
 class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel() {
+    private val compositeDisposable by lazy {
+        CompositeDisposable()
+    }
 
-    private val nowPlayingResult: MutableLiveData<NowPlayingModel> by lazy {
+    private val nowPlayingResult: MutableLiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
-    val nowPlayingLiveData: LiveData<NowPlayingModel> = nowPlayingResult
+    val nowPlayingLiveData: LiveData<MoviesModel> = nowPlayingResult
     private val nowPlayingMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val nowPlayingError: LiveData<NowPlayingModel> by lazy {
+    val nowPlayingError: LiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
@@ -30,16 +36,16 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
 
     }
 
-    private val popularResult: MutableLiveData<PopularModel> by lazy {
+    private val popularResult: MutableLiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
-    val popularModelLiveData: LiveData<PopularModel> = popularResult
+    val popularModelLiveData: LiveData<MoviesModel> = popularResult
 
     private val popularMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val popularError: LiveData<PopularModel> by lazy {
+    val popularError: LiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
@@ -166,46 +172,46 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     }
 
 
-//    private val movievCastsResult: MutableLiveData<MovieCastsModel> by lazy {
-//        MutableLiveData()
-//    }
-//
-//    val MovieCastsLiveData: LiveData<MovieCastsModel> = movievCastsResult
-//
-//    private val movieCastsMError: MutableLiveData<String> by lazy {
-//        MutableLiveData()
-//    }
-//    val movieCastsError: LiveData<MovieReviewsModel> by lazy {
-//        MutableLiveData()
-//    }
-//
-//    fun getCasts(movieId: Long) {
-//        moviesRepository.getCasts(movieId = movieId, page = 1, apiKey = BuildConfig.API_KEY)
-//            .subscribe({ moviecastsModel ->
-//                movievCastsResult.value = moviecastsModel
-//            },
-//                { errorThrowable -> movieCastsMError.value = errorThrowable.localizedMessage })
-//
-//
-//    }
-
-    private val movieCastResult: MutableLiveData<MovieCastsModel> by lazy {
+    private val movievCastsResult: MutableLiveData<MovieCastsModel> by lazy {
         MutableLiveData()
     }
 
-    val movieCastLiveData: LiveData<MovieCastsModel> = movieCastResult
+    val MovieCastsLiveData: LiveData<MovieCastsModel> = movievCastsResult
 
-    private val movieCastError: MutableLiveData<String> by lazy {
+    private val movieCastsMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val movieCastLiveDataError = movieCastError
+    val movieCastsError: LiveData<MovieReviewsModel> by lazy {
+        MutableLiveData()
+    }
 
-    fun getMovieCast(movieId: Long) {
-        moviesRepository.getCast(movieId = movieId).subscribe({ movieCastModel ->
-            movieCastResult.value = movieCastModel
-        },
-            { errorThrowable -> movieCastError.value = errorThrowable.localizedMessage })
+    fun getCasts(movieId: Long) {
+        moviesRepository.getCast(movieId = movieId,  apiKey = BuildConfig.API_KEY)
+            .subscribe({ moviecastsModel ->
+                movievCastsResult.value = moviecastsModel
+            },
+                { errorThrowable -> movieCastsMError.value = errorThrowable.localizedMessage })
 
+
+    }
+    fun getMovies(filer: MovieFilter ) {
+        when (filer) {
+            MovieFilter.POPULAR -> getPopular()
+            MovieFilter.TOP_RATED -> getTopRated()
+            MovieFilter.NOW_PLAYING -> getNowPlaying()
+        }
+    }
+
+
+
+    private fun Disposable.addTo(compositeDisposable: CompositeDisposable) {
+        compositeDisposable.add(this)
+    }
+
+
+    override fun onCleared() {
+        super.onCleared()
+        compositeDisposable.dispose()
     }
 
     private val tokenResult: MutableLiveData<RequestTokenModel> by lazy {

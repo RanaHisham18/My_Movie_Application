@@ -1,6 +1,6 @@
 package com.rana.mymovieapplication.services
 
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
+import com.rana.mymovieapplication.data.remote.entities.MoviesModel
 import retrofit2.http.GET
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.Query
@@ -16,6 +16,6 @@ interface NowPlayingService {
         language: String = "en-US",
         @Query("page")
         page : Int
-    ): Single<NowPlayingModel>
+    ): Single<MoviesModel>
 
 }

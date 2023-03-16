@@ -22,7 +22,7 @@ data class MovieCastsModel(
         val order: Int,
         val original_name: String,
         val popularity: Double,
-        val profile_path: String
+        val profile_path: String?
     )
 
     @JsonClass(generateAdapter = true)
@@ -37,6 +37,6 @@ data class MovieCastsModel(
         val name: String,
         val original_name: String,
         val popularity: Double,
-        val profile_path: String
+        val profile_path: String?
     )
 }

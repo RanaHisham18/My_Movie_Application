@@ -1,4 +1,4 @@
-package com.rana.mymovieapplication.presentation.homescreen
+package com.rana.mymovieapplication.presentation.homescreen.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import kotlinx.android.synthetic.main.popular_rv_item.view.*
 
 class PopularFilmsAdapter(val movieItemCallBack: (movieId: Long) -> Unit) :

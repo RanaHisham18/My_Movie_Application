@@ -3,7 +3,7 @@ package com.rana.mymovieapplication.data.remote.entities
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class  NowPlayingModel(
+data class  MoviesModel(
     val dates: Dates,
     val page: Int,
     val results: List<Result>,

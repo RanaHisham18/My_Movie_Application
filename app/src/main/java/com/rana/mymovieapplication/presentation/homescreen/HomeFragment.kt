@@ -1,9 +1,6 @@
 package com.rana.mymovieapplication.presentation.homescreen
 
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +12,9 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.presentation.homescreen.recyclerview.NowPlayingAdapter
+import com.rana.mymovieapplication.presentation.homescreen.recyclerview.PopularFilmsAdapter
+import com.rana.mymovieapplication.presentation.homescreen.recyclerview.TopRatedAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getNowPlaying()
         viewModel.nowPlayingLiveData.observe(viewLifecycleOwner) {
-            when (it is NowPlayingModel) {
+            when (it is MoviesModel) {
                 true -> {
                     playingNowAdapter.setData(it.results)
                     nowplaying_recyclerview.adapter = playingNowAdapter
@@ -144,7 +144,7 @@ class HomeFragment : Fragment() {
             val navHostFragment =
                 activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
             val navController = navHostFragment.navController
-            navController.navigate(R.id.nowPlayingSeeAllFragment)
+            navController.navigate(R.id.moviesSeeAllFragment)
         })
 
         popular_seeAll_TextView.setOnClickListener(View.OnClickListener {

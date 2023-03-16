@@ -18,8 +18,8 @@ val moviesRepositoryModule = module {
             reviewsService = get(),
             castsService = get(),
             requestTokenService = get(),
-            ioScheduler = get(named("io")),
-            mainScheduler = get(named("main")),
+//            ioScheduler = get(named("io")),
+//            mainScheduler = get(named("main")),
             sharedPreferences = androidApplication().getSharedPreferences(
                 "My Movie Application",
                 Context.MODE_PRIVATE

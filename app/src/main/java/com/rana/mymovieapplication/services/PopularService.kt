@@ -1,7 +1,5 @@
 package com.rana.mymovieapplication.services
 
-import com.rana.mymovieapplication.data.remote.entities.NowPlayingModel
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,7 +1,6 @@
-package com.rana.mymovieapplication.presentation.moviedetails
+package com.rana.mymovieapplication.presentation.moviedetails.recylerview
 
 import com.rana.mymovieapplication.R
-import com.rana.mymovieapplication.data.remote.entities.MovieTrailerModel
 import kotlinx.android.synthetic.main.trailer_rv_item.view.*
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +30,7 @@ class MovieTrailerAdapter(val movieItemCallBack: (videoKey: String) -> Unit): Re
             parent,
             false
         )
-        return MovieTrailerAdapter.MyViewHolder(view, movieItemCallBack)
+        return MyViewHolder(view, movieItemCallBack)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

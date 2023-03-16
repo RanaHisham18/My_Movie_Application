@@ -1,4 +1,4 @@
-package com.rana.mymovieapplication.presentation.homescreen
+package com.rana.mymovieapplication.presentation.homescreen.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.rana.mymovieapplication.R
-import com.rana.mymovieapplication.data.remote.entities.PopularModel
-import com.rana.mymovieapplication.data.remote.entities.TopRatedModel
 import kotlinx.android.synthetic.main.toprated_rv_item.view.*
 
 class TopRatedAdapter(val movieItemCallBack: (movieId: Long) -> Unit)
@@ -33,7 +31,7 @@ class TopRatedAdapter(val movieItemCallBack: (movieId: Long) -> Unit)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.toprated_rv_item,
             parent, false)
-        return TopRatedAdapter.MyViewHolder(view, movieItemCallBack)
+        return MyViewHolder(view, movieItemCallBack)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

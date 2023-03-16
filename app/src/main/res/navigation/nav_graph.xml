@@ -10,26 +10,23 @@
         android:name="com.rana.mymovieapplication.presentation.homescreen.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_popularSeeAllFragment"
-            app:destination="@id/popularSeeAllFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_nowPlayingSeeAllFragment"
-            app:destination="@id/nowPlayingSeeAllFragment" />
+            android:id="@+id/action_homeFragment_to_moviesSeeAllFragment"
+            app:destination="@id/moviesSeeAllFragment" />
         <action
             android:id="@+id/action_homeFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_topRatedSeeAllFragment"
-            app:destination="@id/topRatedSeeAllFragment" />
     </fragment>
     <fragment
-        android:id="@+id/nowPlayingSeeAllFragment"
-        android:name="com.rana.mymovieapplication.presentation.homescreen.NowPlayingSeeAllFragment"
-        android:label="fragment_now_playing_see_all"
-        tools:layout="@layout/fragment_now_playing_see_all" >
+        android:id="@+id/moviesSeeAllFragment"
+        android:name="com.rana.mymovieapplication.presentation.homescreen.MoviesSeeAllFragment"
+        android:label="fragment_movies_see_all"
+        tools:layout="@layout/fragment_movies_see_all">
         <action
             android:id="@+id/action_nowPlayingSeeAllFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <argument
+            android:name="filter"
+            app:argType="com.rana.mymovieapplication.data.remote.filtiration.MovieFilter" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -42,15 +39,6 @@
         <argument
             android:name="movieId"
             app:argType="long" />
-    </fragment>
-    <fragment
-        android:id="@+id/popularSeeAllFragment"
-        android:name="com.rana.mymovieapplication.presentation.homescreen.PopularSeeAllFragment"
-        android:label="fragment_popular_see_all"
-        tools:layout="@layout/fragment_popular_see_all" >
-        <action
-            android:id="@+id/action_popularSeeAllFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -67,14 +55,6 @@
             app:argType="long" />
         <action
             android:id="@+id/action_reviewsFragment_to_movieDetailFragment"
-            app:destination="@id/movieDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/topRatedSeeAllFragment"
-        android:name="com.rana.mymovieapplication.presentation.homescreen.TopRatedSeeAllFragment"
-        android:label="TopRatedSeeAllFragment" >
-        <action
-            android:id="@+id/action_topRatedSeeAllFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
     </fragment>
 </navigation>

@@ -1,4 +1,4 @@
-package com.rana.mymovieapplication.presentation.reviewscreen
+package com.rana.mymovieapplication.presentation.reviewscreen.recyclerview
 
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +30,7 @@ class ReviewsSeeAllAdapter: RecyclerView.Adapter<ReviewsSeeAllAdapter.MyViewHold
             R.layout.reviews_rv_item,
             parent, false
         )
-        return ReviewsSeeAllAdapter.MyViewHolder(view)
+        return MyViewHolder(view)
     }
 
     override fun getItemCount(): Int {
