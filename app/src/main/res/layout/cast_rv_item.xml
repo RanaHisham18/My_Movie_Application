@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
+    <ImageView
+        android:id="@+id/movieDetail_casts_userphoto_Tv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_supervised_user_circle_24"/>
+
+    <TextView
+        android:id="@+id/movieDetail_casts_username_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="bla bla bla "
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toEndOf="@id/movieDetail_casts_userphoto_Tv"
+        app:layout_constraintBottom_toBottomOf="@id/movieDetail_casts_userphoto_Tv"
+        app:layout_constraintTop_toTopOf="@id/movieDetail_casts_userphoto_Tv"/>
+
+    <TextView
+        android:id="@+id/category_Tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/movieDetail_casts_username_Tv"
+        app:layout_constraintEnd_toEndOf="@id/movieDetail_casts_username_Tv"
+        app:layout_constraintTop_toBottomOf="@id/movieDetail_casts_username_Tv"
+        android:text="bla bla category"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
