@@ -31,7 +31,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getNowPlayingFilms(page = 1).subscribe({ nowplayingModel ->
             nowPlayingResult.value = nowplayingModel
         },
-            { errorThrowable -> nowPlayingMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> nowPlayingMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
@@ -53,22 +53,22 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getPopular(page = 1).subscribe({ popularModel ->
             popularResult.value = popularModel
         },
-            { errorThrowable -> popularMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> popularMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
 
-    private val topRatedResult: MutableLiveData<TopRatedModel> by lazy {
+    private val topRatedResult: MutableLiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
-    val topRatedLiveData: LiveData<TopRatedModel> = topRatedResult
+    val topRatedLiveData: LiveData<MoviesModel> = topRatedResult
 
 
     private val topRatedMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val topRatedError: LiveData<TopRatedModel> by lazy {
+    val topRatedError: LiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
@@ -76,7 +76,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getTopRated(page = 1).subscribe({ topratedModel ->
             topRatedResult.value = topratedModel
         },
-            { errorThrowable -> topRatedMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> topRatedMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
@@ -92,7 +92,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
     private val movieCategoryMError: MutableLiveData<String> by lazy {
         MutableLiveData()
     }
-    val movieCategoryError: LiveData<TopRatedModel> by lazy {
+    val movieCategoryError: LiveData<MoviesModel> by lazy {
         MutableLiveData()
     }
 
@@ -100,7 +100,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getCategory(page = 1).subscribe({ moviecategoryModel ->
             moviecategoryResult.value = moviecategoryModel
         },
-            { errorThrowable -> movieCategoryMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> movieCategoryMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
@@ -123,7 +123,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getDetails(movieId = movieId, page = 1).subscribe({ moviedetailsModel ->
             movievdetailsResult.value = moviedetailsModel
         },
-            { errorThrowable -> movieDetailsMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> movieDetailsMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
@@ -146,7 +146,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getTrailer(movieId = movieId, page = 1).subscribe({ movietrailerModel ->
             movievTrailerResult.value = movietrailerModel
         },
-            { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> movieTrailerMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
@@ -167,7 +167,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getReviews(movieId = movieId, page = 1).subscribe({ movieReviewsModel ->
             movieReviewsResult.value = movieReviewsModel
         },
-            { errorThrowable -> movieReviewsError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> movieReviewsError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
     }
 
@@ -190,12 +190,12 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
             .subscribe({ moviecastsModel ->
                 movievCastsResult.value = moviecastsModel
             },
-                { errorThrowable -> movieCastsMError.value = errorThrowable.localizedMessage })
+                { errorThrowable -> movieCastsMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
 
     }
-    fun getMovies(filer: MovieFilter ) {
-        when (filer) {
+    fun getMovies(filter: MovieFilter ) {
+        when (filter) {
             MovieFilter.POPULAR -> getPopular()
             MovieFilter.TOP_RATED -> getTopRated()
             MovieFilter.NOW_PLAYING -> getNowPlaying()
@@ -230,7 +230,7 @@ class HomeViewModel(private val moviesRepository: MoviesRepository) : ViewModel(
         moviesRepository.getToken(apiKey = BuildConfig.API_KEY).subscribe({ requestTokenModel ->
             tokenResult.value = requestTokenModel
         },
-            { errorThrowable -> tokenMError.value = errorThrowable.localizedMessage })
+            { errorThrowable -> tokenMError.value = errorThrowable.localizedMessage }).addTo(compositeDisposable)
 
     }
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.*
+import com.rana.mymovieapplication.data.remote.filtiration.MovieFilter
 import com.rana.mymovieapplication.presentation.homescreen.recyclerview.NowPlayingAdapter
 import com.rana.mymovieapplication.presentation.homescreen.recyclerview.PopularFilmsAdapter
 import com.rana.mymovieapplication.presentation.homescreen.recyclerview.TopRatedAdapter
@@ -101,7 +102,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getPopular()
         viewModel.popularModelLiveData.observe(viewLifecycleOwner) {
-            when (it is PopularModel) {
+            when (it is MoviesModel) {
                 true -> {
                     popularFilmsAdapter.setData(it.results)
                     popular_recyclerview.adapter = popularFilmsAdapter
@@ -114,7 +115,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getTopRated()
         viewModel.topRatedLiveData.observe(viewLifecycleOwner) {
-            when (it is TopRatedModel) {
+            when (it is MoviesModel) {
                 true -> {
                     topRatedAdapter.setData(it.results)
                     toprated_recyclerview.adapter = topRatedAdapter
@@ -141,24 +142,15 @@ class HomeFragment : Fragment() {
 
         //to be checked
         nowplay_seeAll_TextView.setOnClickListener(View.OnClickListener {
-            val navHostFragment =
-                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.moviesSeeAllFragment)
+           findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoviesSeeAllFragment(MovieFilter.NOW_PLAYING))
         })
 
         popular_seeAll_TextView.setOnClickListener(View.OnClickListener {
-            val navHostFragment =
-                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.popularSeeAllFragment)
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoviesSeeAllFragment(MovieFilter.POPULAR))
         })
 
         toprated_seeAll_TextView.setOnClickListener(View.OnClickListener {
-            val navHostFragment =
-                activity?.supportFragmentManager?.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.topRatedSeeAllFragment)
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToMoviesSeeAllFragment(MovieFilter.TOP_RATED))
         })
 
 

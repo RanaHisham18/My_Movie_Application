@@ -9,11 +9,11 @@ import com.rana.mymovieapplication.R
 import com.rana.mymovieapplication.data.remote.entities.MoviesModel
 import kotlinx.android.synthetic.main.nowplaying_seeall_rv_item.view.*
 
-class MoviesSeeAllAdapter: RecyclerView.Adapter<MoviesSeeAllAdapter.MyViewHolder> (){
+class MoviesSeeAllAdapter(val movieItemCallBack: (movieId: Long) -> Unit): RecyclerView.Adapter<MoviesSeeAllAdapter.MyViewHolder> (){
 
     private var movies = emptyList<MoviesModel.Result>()
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class MyViewHolder(itemView: View, val movieItemCallBack: (movieId: Long) -> Unit) : RecyclerView.ViewHolder(itemView){
 
         fun bind(movie: MoviesModel.Result) {
             itemView.nowplaying_seeall_filmname_TV.text = movie.original_title
@@ -26,7 +26,7 @@ class MoviesSeeAllAdapter: RecyclerView.Adapter<MoviesSeeAllAdapter.MyViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.nowplaying_seeall_rv_item,
             parent, false)
-        return MyViewHolder(view)
+        return MyViewHolder(view, movieItemCallBack)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
